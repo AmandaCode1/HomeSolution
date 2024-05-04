@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AF/zGp4AUB6uAJ8EkRtNI/0rE2B3wcmDs7f3pRzZ0Rzm8L8SF+e4um8iFbXvGA7+DtcrtNaiH0/3XgA2SDJ2cA==",
+  "dgSpecHash": "Afok6VjM4O1VWwx0bfjXKUvECoAuq21i0Rrl9bCfksZQfQ1iPzKI5tXTafGsA/y1LlGzL92BUCIyNFjsEs7txg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AMANDA\\Documents\\Mis cosas\\TFG Amanda Benito\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
+  "projectFilePath": "C:\\Users\\AMANDA\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AMANDA\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\AMANDA\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
