@@ -1,4 +1,6 @@
-
+using Pomelo.EntityFrameworkCore;
+using homesolutionBack.Models;
+using Microsoft.EntityFrameworkCore;
 namespace homesolutionBack
 {
     public class Program
@@ -13,6 +15,9 @@ namespace homesolutionBack
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //Para configurar nuestro contexto con nuestra cadena de conexion para utlizarla en los controladores
+            builder.Services.AddDbContext<HomesolutionbdContext>(opt => opt.UseMySql(builder.Configuration.GetConnectionString("cadenaMySql")));
 
             var app = builder.Build();
 
