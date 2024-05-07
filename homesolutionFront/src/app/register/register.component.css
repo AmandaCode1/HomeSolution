@@ -24,3 +24,22 @@
     }
   }
   
+  
+  .header-img {
+    width: 100%;
+  }
+  .history-section {
+    padding: 50px 0;
+  }
+  
+
+  /* Estilo para la imagen de fondo */
+.header-img {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  width: 100%;
+  opacity: 0.6; 
+}
