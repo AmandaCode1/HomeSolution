@@ -8,3 +8,23 @@
     padding: 50px 0;
   }
   
+
+  /* Estilo para la imagen de fondo */
+.header-img {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  width: 100%;
+  opacity: 0.6; 
+}
+
+
+/* Estilo para el contenido de las secciones */
+.history-section,
+.owners-section {
+  position: relative;
+  z-index: 5; /* Asegura que el contenido esté encima de la imagen de fondo */
+}
+
