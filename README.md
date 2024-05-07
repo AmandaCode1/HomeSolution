@@ -2,6 +2,6 @@
 the best project in the world
 
 
-#AnteProyecto
+#AnteProyecto(Notion)
 
-https://www.notion.so/Anteproyecto-de-HomeSolutions-1cae5b8ee34e42439c6d6d6b2fac6ea9?pvs=4
+https://notch-ogre-0cb.notion.site/Anteproyecto-de-HomeSolutions-1cae5b8ee34e42439c6d6d6b2fac6ea9
