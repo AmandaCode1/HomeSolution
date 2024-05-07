@@ -23,8 +23,20 @@ public partial class HomesolutionbdContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;port=3307;database=homesolutionbd;uid=root;pwd=harrypopotter", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.37-mysql"));
+    {
+        //Para no tener la cadena de conexion directamente en el codigo que es un riesgo de seguridad, la pasamos a appsettings.json
+        if (!optionsBuilder.IsConfigured)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString = configuration.GetConnectionString("cadenaMySql");
+
+            optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.37-mysql"));
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
