@@ -14,12 +14,15 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/contactos" (click)="aplicarAnimacion($event)">Contacto</a>
       </li> 
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ofertas" (click)="aplicarAnimacion($event)">Ofertas</a>
+      </li> 
 
     </ul>
   </div>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/login" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+      <a class="nav-link" routerLink="/login" (click)="desactivarAnimacion($event)" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
     </li>
   </ul>
 </nav>

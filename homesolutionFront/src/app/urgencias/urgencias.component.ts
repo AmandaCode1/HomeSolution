@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./urgencias.component.css']
 })
 export class UrgenciasComponent {
+[x: string]: any;
 
 }
+
+export class Componente24hComponent {
+
+  constructor() { }
+
+
+  }
+
