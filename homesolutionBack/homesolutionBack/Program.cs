@@ -1,6 +1,9 @@
 using Pomelo.EntityFrameworkCore;
 using homesolutionBack.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System;
 namespace homesolutionBack
 {
     public class Program
@@ -17,7 +20,12 @@ namespace homesolutionBack
             builder.Services.AddSwaggerGen();
 
             //Para configurar nuestro contexto con nuestra cadena de conexion para utlizarla en los controladores
-            builder.Services.AddDbContext<HomesolutionbdContext>(opt => opt.UseMySql(builder.Configuration.GetConnectionString("cadenaMySql")));
+            builder.Services.AddDbContext<HomesolutionbdContext>(opt => 
+            {
+                // Obtener la cadena de conexión desde appsettings.json
+                string connectionString = builder.Configuration.GetConnectionString("cadenaMySql");
+
+            });
 
             var app = builder.Build();
 
@@ -31,7 +39,6 @@ namespace homesolutionBack
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace homesolutionBack.Models;
 
-public partial class Usuario
+public partial class Usuarios
 {
     public int UserId { get; set; }
 
@@ -19,5 +19,5 @@ public partial class Usuario
 
     public string? Direccion { get; set; }
 
-    public virtual ICollection<SolicitudServicio> SolicitudServicios { get; set; } = new List<SolicitudServicio>();
+    public virtual ICollection<SolicitudServicios> SolicitudServicios { get; set; } = new List<SolicitudServicios>();
 }
