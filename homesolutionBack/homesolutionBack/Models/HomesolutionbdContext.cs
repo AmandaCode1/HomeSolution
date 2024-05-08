@@ -16,11 +16,11 @@ public partial class HomesolutionbdContext : DbContext
     {
     }
 
-    public virtual DbSet<Servicio> Servicios { get; set; }
+    public virtual DbSet<Servicios> Servicios { get; set; }
 
-    public virtual DbSet<SolicitudServicio> SolicitudServicios { get; set; }
+    public virtual DbSet<SolicitudServicios> SolicitudServicios { get; set; }
 
-    public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -34,7 +34,7 @@ public partial class HomesolutionbdContext : DbContext
 
             string connectionString = configuration.GetConnectionString("cadenaMySql");
 
-            optionsBuilder.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.37-mysql"));
+           optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("8.0.37-mysql"));
         }
     }
 
@@ -44,7 +44,7 @@ public partial class HomesolutionbdContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Servicio>(entity =>
+        modelBuilder.Entity<Servicios>(entity =>
         {
             entity.HasKey(e => e.ServicioId).HasName("PRIMARY");
 
@@ -57,7 +57,7 @@ public partial class HomesolutionbdContext : DbContext
             entity.Property(e => e.Precio).HasPrecision(10, 2);
         });
 
-        modelBuilder.Entity<SolicitudServicio>(entity =>
+        modelBuilder.Entity<SolicitudServicios>(entity =>
         {
             entity.HasKey(e => e.SolicitudId).HasName("PRIMARY");
 
@@ -82,7 +82,7 @@ public partial class HomesolutionbdContext : DbContext
                 .HasConstraintName("fk_UserID");
         });
 
-        modelBuilder.Entity<Usuario>(entity =>
+        modelBuilder.Entity<Usuarios>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PRIMARY");
 

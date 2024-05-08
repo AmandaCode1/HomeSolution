@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace homesolutionBack.Models;
 
-public partial class Servicio
+public partial class Servicios
 {
     public int ServicioId { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Servicio
 
     public string? Categoria { get; set; }
 
-    public virtual ICollection<SolicitudServicio> SolicitudServicios { get; set; } = new List<SolicitudServicio>();
+    public virtual ICollection<SolicitudServicios> SolicitudServicios { get; set; } = new List<SolicitudServicios>();
 }

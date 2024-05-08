@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace homesolutionBack.Models;
 
-public partial class SolicitudServicio
+public partial class SolicitudServicios
 {
     public int SolicitudId { get; set; }
 
@@ -13,7 +13,7 @@ public partial class SolicitudServicio
 
     public DateOnly? FechaSolicitud { get; set; }
 
-    public virtual Servicio? Servicio { get; set; }
+    public virtual Servicios? Servicio { get; set; }
 
-    public virtual Usuario? User { get; set; }
+    public virtual Usuarios? User { get; set; }
 }
