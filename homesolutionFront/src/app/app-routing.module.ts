@@ -6,6 +6,7 @@ import { QuehacemosComponent } from './quehacemos/quehacemos.component';
 import { UrgenciasComponent } from './urgencias/urgencias.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { OfertasComponent } from './ofertas/ofertas.component';
 
 const routes: Routes = [
   { path: 'homesolution', component: HomesolutionComponent },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'urgencias', component: UrgenciasComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'ofertas', component: OfertasComponent },
+  {path: '', redirectTo: '/homesolution', pathMatch: 'full'}
 ];
 
 @NgModule({

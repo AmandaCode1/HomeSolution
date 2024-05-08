@@ -1,0 +1,53 @@
+
+.header {
+    margin-bottom: 20px;
+  }
+  .header-img {
+    width: 100%;
+  }
+  
+  .info-section,
+  .contact-section {
+    margin-bottom: 40px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .whatsapp-section {
+    margin-top: 40px;
+  }
+  .header-img {
+    width: 100%;
+  }
+  .history-section {
+    padding: 50px 0;
+  }
+  
+.header-img {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  width: 100%;
+  opacity: 0.6; 
+}
+
+.header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+ text-align: center;
+}
+
+
+.horas {
+  width: 50%;
+  border-radius: 15px;
+ border-color: aqua;
+ transition: transform 0.3s ease; 
+}
+.horas:hover {
+  transform: scale(1.1); 
+}

@@ -3,7 +3,10 @@
     "",
     "\\homesolutionBack",
     "\\homesolutionBack\\Controllers",
-    "\\homesolutionBack\\Models"
+    "\\homesolutionBack\\Models",
+    "\\homesolutionBack\\obj",
+    "\\homesolutionBack\\obj\\Debug",
+    "\\homesolutionBack\\obj\\Debug\\net8.0"
   ],
   "SelectedNode": "\\homesolutionBack\\Models\\Usuario.cs",
   "PreviewInSolutionExplorer": false
