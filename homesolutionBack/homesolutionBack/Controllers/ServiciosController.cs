@@ -8,34 +8,37 @@ namespace homesolutionBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServicioController : ControllerBase
+    public class ServiciosController : ControllerBase
     {
         //declaramos objeto de nuestra base de batos para crud
         public readonly HomesolutionbdContext _dbcontext;
 
         //constructor
-        public ServicioController(HomesolutionbdContext _context)
+        public ServiciosController(HomesolutionbdContext _context)
         {
             _dbcontext = _context;
         }
 
-        [HttpGet]
-        [Route("Servicios")]
-        public IActionResult Servicios()
+        //Asincrono para que sea mas eficiente, que no bloquee el proceso principal mientras espera respuesta de la bd
+
+        [HttpGet("VerLista")]
+        public async Task<IActionResult> Servicios()
         {
             //objeto de lista de servicios
             List<Servicios> servicios = new List<Servicios>();
 
             try
             {
-                servicios = _dbcontext.Servicios.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = servicios });
+                servicios = await _dbcontext.Servicios.ToListAsync();
+                return StatusCode(StatusCodes.Status200OK, (servicios));
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ERROR "+ex.Message, response = servicios });
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al obtener la lista de servicios: {e.Message}");
             }
         }
+
+        
     }
 }
