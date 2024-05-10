@@ -5,9 +5,8 @@
     "\\homesolutionBack\\Controllers",
     "\\homesolutionBack\\Models",
     "\\homesolutionBack\\obj",
-    "\\homesolutionBack\\obj\\Debug",
-    "\\homesolutionBack\\obj\\Debug\\net8.0"
+    "\\homesolutionBack\\obj\\Debug"
   ],
-  "SelectedNode": "\\homesolutionBack\\Models\\Usuario.cs",
+  "SelectedNode": "\\homesolutionBack\\Controllers\\ServicioController.cs",
   "PreviewInSolutionExplorer": false
 }

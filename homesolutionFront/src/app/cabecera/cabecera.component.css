@@ -1,14 +1,15 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~animate.css/animate.min.css';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 
+.navbar-brand{
+  margin-left: 8px;
+}
 .animacion-color {
     animation: cambio-color 5s infinite linear;
     border-radius: 15%;
   }
 
-  @keyframes cambio-color { /* Animacion */
+  @keyframes cambio-color { 
     0% { background-color: rgb(82, 89, 230); }
     25% { background-color: rgb(86, 141, 196); }
     50% { background-color: rgb(91, 84, 209); }

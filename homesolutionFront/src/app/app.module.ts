@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
@@ -10,8 +10,9 @@ import { ContactosComponent } from './contactos/contactos.component';
 import { HomesolutionComponent } from './homesolution/homesolution.component';
 import { QuehacemosComponent } from './quehacemos/quehacemos.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+
 import { OfertasComponent } from './ofertas/ofertas.component';
+import { PreloadComponent } from './preload/preload.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,13 @@ import { OfertasComponent } from './ofertas/ofertas.component';
     HomesolutionComponent,
     QuehacemosComponent,
     LoginComponent,
-    RegisterComponent,
-    OfertasComponent
+    OfertasComponent,
+    PreloadComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
