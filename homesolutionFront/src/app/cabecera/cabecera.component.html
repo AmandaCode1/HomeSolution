@@ -1,28 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/homesolution" (click)="desactivarAnimacion($event)">
-    <i class="fas fa-home"></i> HOMESOLUTION
-  </a>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/quehacemos" (click)="aplicarAnimacion($event)">¿Qué hacemos?</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/urgencias" (click)="aplicarAnimacion($event)">Urgencias 24H</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/contactos" (click)="aplicarAnimacion($event)">Contacto</a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/ofertas" (click)="aplicarAnimacion($event)">Ofertas</a>
-      </li> 
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
+    <a class="navbar-brand" routerLink="/homesolution" (click)="desactivarAnimacion($event)">
+      <i class="fas fa-home"></i> HOMESOLUTION
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/quehacemos" (click)="aplicarAnimacion($event)">¿Qué hacemos?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/urgencias" (click)="aplicarAnimacion($event)">Urgencias 24H</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contactos" (click)="aplicarAnimacion($event)">Contacto</a>
+        </li> 
+       <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/ofertas" (click)="aplicarAnimacion($event)">Ofertas</a>
+        </li> -->
 
+      </ul>
+    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" (click)="desactivarAnimacion($event)" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+      </li>
     </ul>
+  </nav>
+
+  <!-- Resto del contenido de tu página -->
+  <div class="main-content">
+    <!-- Aquí va el contenido principal de tu página -->
   </div>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/login" (click)="desactivarAnimacion($event)" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
-    </li>
-  </ul>
-</nav>
+</body>

@@ -15,29 +15,78 @@
   z-index: 5;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.container-fluid
+{
+margin-top: 5%;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.main-section {
-  padding: 30px;
-  margin-top: 30px;
-  border: 4px solid #000000;
-  background-color: #fff;
-  opacity: 0.8;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-}
-
-.workers-section img {
-  max-width: 100%;
-  height: auto;
+.logo {
+  margin-top: 10%;
+  width: 30%;
+  margin: 0 auto; 
+  display: block;
   border-radius: 50%;
-  margin-bottom: 10px;
+  animation: fadeIn 2s ease forwards; 
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.5);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}}
+
+@keyframes animacion-letras {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
+
+.animacion-letras {
+  animation: animacion-letras 2s infinite alternate;
+}
+
+/* Estilos para los textos */
+.custom-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para resaltar los textos */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+header h1 {
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 700; 
+  font-size: 48px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+      -1px -1px 0 #ffffff,  
+      1px -1px 0  #ffffff,
+      -1px 1px 0  #ffffff,
+      1px 1px 0  #ffffff; 
+}
+

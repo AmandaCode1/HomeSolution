@@ -1,98 +1,95 @@
-
-  .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    
-  }
-  
-  h1 {
-    font-size: 32px;
-    color: #333; 
-    margin-bottom: 20px;
-  }
-  
-  p {
-    font-size: 18px;
-    color: #555; 
-    margin-bottom: 10px;
-  }
-  
-  iframe {
-    width: 100%;
-    height: 300px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  div a {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 24px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-
-  div a i {
-    vertical-align: middle;
-  }
-  
-  
-  div a:hover {
-    color: #007bff; 
-  
- 
-@keyframes entrada {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-
-  .container {
-  
-    animation: entrada 1s ease-out; 
-  
-  }
-  
-  .header-img {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1; 
-    opacity: 0.6; 
-  }
-  
-
-  .history-section,
-  .owners-section {
-    position: relative;
-    z-index: 5; 
-  }
-
-.redesociales{
-text-align: center;
+.header-img {
+  width: 100%;
 }
+
+.header-img {
+width: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1; 
+width: 100%;
+opacity: 0.6; 
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  color: #333; 
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #555; 
+  margin-bottom: 10px;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+div a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+div a i {
+  vertical-align: middle;
+}
+
+
+div a:hover {
+  color: #007bff; 
+
+
+@keyframes entrada {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.container {
+
+  animation: entrada 1s ease-out; 
+
+}
+
 
 .bi-instagram:hover{
-  color: rgb(179, 63, 179);
+color: rgb(179, 63, 179);
 }
 .bi-youtube:hover{
-  color:red;
+color:red;
 }
 .bi-whatsapp:hover{
-  color:rgb(6, 226, 6)
+color:rgb(6, 226, 6)
 }
 }
+
+
 

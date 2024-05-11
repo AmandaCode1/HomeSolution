@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\homesolutionBack",
-    "\\homesolutionBack\\Models"
+    "\\homesolutionBack\\Controllers",
+    "\\homesolutionBack\\Models",
+    "\\homesolutionBack\\obj",
+    "\\homesolutionBack\\obj\\Debug"
   ],
-  "SelectedNode": "\\homesolutionBack\\Models\\HomesolutionbdContext.cs",
+  "SelectedNode": "\\homesolutionBack\\Controllers\\ServicioController.cs",
   "PreviewInSolutionExplorer": false
 }

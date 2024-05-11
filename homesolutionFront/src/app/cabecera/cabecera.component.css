@@ -1,14 +1,15 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~animate.css/animate.min.css';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 
+.navbar-brand{
+  margin-left: 8px;
+}
 .animacion-color {
     animation: cambio-color 5s infinite linear;
     border-radius: 15%;
   }
 
-  @keyframes cambio-color { /* Animacion */
+  @keyframes cambio-color { 
     0% { background-color: rgb(82, 89, 230); }
     25% { background-color: rgb(86, 141, 196); }
     50% { background-color: rgb(91, 84, 209); }
@@ -17,3 +18,17 @@
   }
   
 
+/* Estilos para el encabezado */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Cambia el color de fondo según tus preferencias */
+  z-index: 1000; /* Asegura que el encabezado esté por encima del contenido */
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+  margin-top: 80px; /* Ajusta este valor según la altura de tu encabezado para evitar superposiciones */
+}
