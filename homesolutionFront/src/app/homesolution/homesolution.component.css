@@ -55,16 +55,14 @@ margin-top: 5%;
   animation: animacion-letras 2s infinite alternate;
 }
 
-/* Estilos personalizados */
+/* Estilos para los textos */
 .custom-box {
-  border: 2px solid #007bff;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para resaltar los textos */
   padding: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
-  font-family: 'Roboto', sans-serif; 
-  animation: fadeInUp 1s ease; 
-  background-color: white; 
 }
+
 
 @keyframes fadeInUp {
   0% {
@@ -91,3 +89,4 @@ header h1 {
       -1px 1px 0  #ffffff,
       1px 1px 0  #ffffff; 
 }
+

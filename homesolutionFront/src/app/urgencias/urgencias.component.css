@@ -1,9 +1,6 @@
 
-.header {
-    margin-bottom: 20px;
-  }
   .header-img {
-    width: 100%;
+    width: 20%;
   }
   
   .info-section,
@@ -15,9 +12,7 @@
   .whatsapp-section {
     margin-top: 40px;
   }
-  .header-img {
-    width: 100%;
-  }
+  
   .history-section {
     padding: 50px 0;
   }
@@ -48,11 +43,34 @@
   background-color: white; 
 }
 .horas {
-  width: 50%;
+  width: 30%;
   border-radius: 15px;
  border-color: aqua;
+ border: 3px;
  transition: transform 0.3s ease; 
 }
 .horas:hover {
   transform: scale(1.1); 
+}
+
+
+/* Estilos para el fondo de video */
+.background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+/* Estilos para el contenido */
+.content {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté sobre el video */
+}
+
+.contact-section{
+ font: bold;
+color: white;
 }

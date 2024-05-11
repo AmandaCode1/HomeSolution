@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("homesolutionBack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d3aa74632cd8499c8936c5252f03168e14eaf5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb7da1af86ead8cfdd224c3f8d879ff6572df9ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("homesolutionBack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("homesolutionBack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

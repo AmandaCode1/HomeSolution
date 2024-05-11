@@ -18,3 +18,17 @@
   }
   
 
+/* Estilos para el encabezado */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* Cambia el color de fondo según tus preferencias */
+  z-index: 1000; /* Asegura que el encabezado esté por encima del contenido */
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+  margin-top: 80px; /* Ajusta este valor según la altura de tu encabezado para evitar superposiciones */
+}
