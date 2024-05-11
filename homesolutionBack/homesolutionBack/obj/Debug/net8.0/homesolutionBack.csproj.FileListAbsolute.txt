@@ -137,3 +137,4 @@ C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\
 C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\obj\Debug\net8.0\ref\homesolutionBack.dll
 C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

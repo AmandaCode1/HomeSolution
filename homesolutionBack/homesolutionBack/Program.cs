@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace homesolutionBack
 {
     public class Program
@@ -27,6 +29,21 @@ namespace homesolutionBack
 
             });
 
+            //Utilizar la autenticacion por JWT
+            builder.Services.AddAuthentication().AddJwtBearer(options =>
+            {
+                //Guardamos la clase privada en variables de entorno
+                string key = Environment.GetEnvironmentVariable("JWT_KEY");
+
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    //Clave secreta para firmar y validar el token
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+                };
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -43,6 +60,10 @@ namespace homesolutionBack
             app.MapControllers();
 
             app.Run();
+
+            //Habilita autenticacion y autorizacion
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }
