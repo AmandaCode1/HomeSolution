@@ -44,6 +44,20 @@ namespace homesolutionBack
                 };
             });
 
+            //Permite cors para que no bloquee las peticiones
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddCors(options =>
+                {
+                    options.AddDefaultPolicy(builder =>
+                    {
+                        builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+                });
+            }
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -51,19 +65,23 @@ namespace homesolutionBack
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+
+                app.UseCors();
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
+            //Habilita autenticacion y autorizacion
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.MapControllers();
 
             app.Run();
 
-            //Habilita autenticacion y autorizacion
-            app.UseAuthentication();
-            app.UseAuthorization();
+            
         }
     }
 }
