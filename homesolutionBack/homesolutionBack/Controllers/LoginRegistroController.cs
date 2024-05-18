@@ -66,10 +66,14 @@ namespace homesolutionBack.Controllers
         [HttpPost("Registro")]
         public async Task<IActionResult> Registro([FromBody] RegistroDto registroDto)
         {
-            if (await _dbcontext.Usuarios.AnyAsync(u => u.Nombre == registroDto.Nombre))
+            var usuarioExiste = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.Nombre == registroDto.Nombre);
+            if (usuarioExiste != null)
             {
-                return BadRequest("El nombre de usuario ya existe");
+                return BadRequest("El usuario ya existe");
             }
+
+            //hashea la contraseña
+            var hashedPassword = PasswordHash.Hash(registroDto.Password);
 
             var newUsuario = new Usuarios
             {
@@ -78,14 +82,14 @@ namespace homesolutionBack.Controllers
                 Password = registroDto.Password,
                 Rol = registroDto.Rol,
                 Telefono = registroDto.Telefono,
-                Direccion = registroDto.Direccion
+                Direccion = hashedPassword
             };
 
             //añade el usuario a la bd y guarda
             _dbcontext.Usuarios.Add(newUsuario);
             await _dbcontext.SaveChangesAsync();
 
-            return StatusCode(StatusCodes.Status200OK, newUsuario);
+            return StatusCode(StatusCodes.Status200OK, "Usuario regisrado correctamente");
         }
 
     }
