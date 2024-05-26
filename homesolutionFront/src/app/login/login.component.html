@@ -1,9 +1,6 @@
+<!--
 
 
-
-<div class="login-container">
-  
-  <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
     <div class="login-section">
    
       <h2>Iniciar sesión</h2>
@@ -55,3 +52,71 @@
           </div>
         </div>
 -->
+
+
+<div class="login-container">
+
+  <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+  <div class="auth-container">
+    <div class="auth-toggle">
+      <button (click)="alternarFormulario()">
+        {{ iniciarSesion ? 'Registrar' : 'Iniciar Sesión' }}
+      </button>
+    </div>
+
+    <div *ngIf="iniciarSesion; else registroForm">
+      <form (ngSubmit)="login()">
+        <div>
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="loginDto.nombre" name="nombre" required>
+        </div>
+        <div>
+          <label>Contraseña</label>
+          <input type="password" [(ngModel)]="loginDto.password" name="password" required>
+        </div>
+        <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+    </div>
+
+    <ng-template #registroForm>
+      <form (ngSubmit)="registro()">
+        <div>
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="registroDto.nombre" name="nombre" required>
+        </div>
+        <div>
+          <label>Correo Electrónico</label>
+          <input type="email" [(ngModel)]="registroDto.correoElectronico" name="correoElectronico" required>
+        </div>
+        <div>
+          <label>Contraseña</label>
+          <input type="password" [(ngModel)]="registroDto.password" name="password" required>
+        </div>
+        <div>
+          <label>Rol</label>
+          <input type="text" [(ngModel)]="registroDto.rol" name="rol" required>
+        </div>
+        <div>
+          <label>Teléfono</label>
+          <input type="text" [(ngModel)]="registroDto.telefono" name="telefono" required>
+        </div>
+      <div>
+          <label>Dirección</label>
+          <input type="text" [(ngModel)]="registroDto.direccion" name="direccion" required>
+        </div>
+        <button type="submit">Registrar</button>
+      </form>
+    </ng-template>
+  </div>
+
+
+  <div class="auth-container">
+    <div *ngIf="autenticado">
+      <div *ngIf="CerrarSesion" class="welcome-message">{{ CerrarSesion }}</div>
+      <button (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <!-- Resto del contenido de tu formulario de login/registro -->
+  </div>
+</div>

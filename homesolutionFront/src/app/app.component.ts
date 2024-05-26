@@ -1,4 +1,4 @@
-// app.component.ts
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,9 +10,13 @@ export class AppComponent implements OnInit {
   loading = true;
 
   ngOnInit() {
+
+    
  
     setTimeout(() => {
-      this.loading = false;
+      this.loading = false
     }, 3000); 
   }
+
+   apiUrl = 'https://localhost:7161/';
 }

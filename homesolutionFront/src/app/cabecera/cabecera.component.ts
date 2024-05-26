@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SesionService } from '../sesion.service';
 
 @Component({
   selector: 'app-cabecera',
   templateUrl: './cabecera.component.html',
   styleUrls: ['./cabecera.component.css']
 })
-export class CabeceraComponent {
-  constructor() { }
+export class CabeceraComponent implements OnInit {
+  autenticado: boolean = false;
+  constructor(private sesionService: SesionService) {}
+  isCollapsed: boolean = true;
+  ngOnInit(): void {
+    this.autenticado = this.sesionService.estaAutenticado();
+  }
 
   aplicarAnimacion(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -20,7 +26,7 @@ export class CabeceraComponent {
 
     setTimeout(() => {
       target.classList.remove('animacion-color');
-    }, 50000); // el timepo qie dura la animiaciom
+    }, 50000); 
   }
 
   desactivarAnimacion(event: MouseEvent) {
@@ -29,6 +35,10 @@ export class CabeceraComponent {
     navLinks.forEach(link => {
       link.classList.remove('animacion-color');
     });
+  }
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }
 

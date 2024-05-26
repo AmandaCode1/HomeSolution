@@ -17,7 +17,6 @@
     100% { background-color: rgba(71, 216, 252, 0.758); } 
   }
   
-
 /* Estilos para el encabezado */
 .sticky-header {
   position: fixed;
@@ -31,4 +30,17 @@
 /* Estilos para el contenido principal */
 .main-content {
   margin-top: 80px; /* Ajusta este valor según la altura de tu encabezado para evitar superposiciones */
+}
+
+/* Ajustes adicionales */
+.navbar-brand {
+  margin-left: 8px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-item {
+  margin-right: 15px;
 }

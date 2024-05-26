@@ -1,4 +1,4 @@
-/* Estilos para el primer botón */
+/* Estilos para el primer botón 
 button.first-button {
   display: block;
   margin: 0 auto;
@@ -129,3 +129,51 @@ z-index: -1;
 width: 100%;
 opacity: 0.6; 
 }*/
+
+.auth-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.header-img {
+  width: 100%;
+}
+
+.header-img {
+width: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: -1; 
+width: 100%;
+opacity: 0.6; 
+}

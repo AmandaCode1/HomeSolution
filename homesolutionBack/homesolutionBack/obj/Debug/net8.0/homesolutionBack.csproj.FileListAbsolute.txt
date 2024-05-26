@@ -276,3 +276,4 @@ C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\
 C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\obj\Debug\net8.0\homesolutionBack.csproj.CopyComplete
 C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\obj\Debug\net8.0\homesolutionBack.genruntimeconfig.cache
 C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\obj\Debug\net8.0\ref\homesolutionBack.dll
+C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
