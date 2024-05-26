@@ -22,7 +22,7 @@ namespace homesolutionBack
             builder.Services.AddSwaggerGen();
 
             //Para configurar nuestro contexto con nuestra cadena de conexion para utlizarla en los controladores
-            builder.Services.AddDbContext<HomesolutionbdContext>(opt => 
+            builder.Services.AddDbContext<FreedbHomesolutiondbContext>(opt => 
             {
                 // Obtener la cadena de conexión desde appsettings.json
                 string connectionString = builder.Configuration.GetConnectionString("cadenaMySql");

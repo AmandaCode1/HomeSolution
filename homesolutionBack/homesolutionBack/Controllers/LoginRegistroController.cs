@@ -14,12 +14,12 @@ namespace homesolutionBack.Controllers
     [ApiController]
     public class LoginRegistroController : ControllerBase
     {
-        private readonly HomesolutionbdContext _dbcontext;
+        private readonly FreedbHomesolutiondbContext _dbcontext;
 
         //parametros para crear token
         private readonly TokenValidationParameters _tokenParameters;
 
-        public LoginRegistroController(IOptionsMonitor<JwtBearerOptions> jwtOptions, HomesolutionbdContext dbcontext)
+        public LoginRegistroController(IOptionsMonitor<JwtBearerOptions> jwtOptions, FreedbHomesolutiondbContext dbcontext)
         {
             _dbcontext = dbcontext;
             _tokenParameters = jwtOptions.Get(JwtBearerDefaults.AuthenticationScheme).TokenValidationParameters;
@@ -32,7 +32,7 @@ namespace homesolutionBack.Controllers
             var hashedPassword = PasswordHash.Hash(loginDto.Password);
 
             //busca en la bd un usuario que coincida
-            var usuario = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.Nombre == loginDto.Nombre && u.Password == loginDto.Password);
+            var usuario = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == loginDto.Nombre && u.Password == loginDto.Password);
             
             if (usuario == null) 
             {
@@ -45,7 +45,7 @@ namespace homesolutionBack.Controllers
                 Claims = new Dictionary<string, object>
                 {
                     { "id", Guid.NewGuid().ToString() },
-                    { "idUsuario", usuario.UserId }
+                    { "idUsuario", usuario.UsuarioId }
                 },
                 //Expiracion token
                 Expires = DateTime.UtcNow.AddDays(200),
@@ -66,7 +66,7 @@ namespace homesolutionBack.Controllers
         [HttpPost("Registro")]
         public async Task<IActionResult> Registro([FromBody] RegistroDto registroDto)
         {
-            var usuarioExiste = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.Nombre == registroDto.Nombre);
+            var usuarioExiste = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == registroDto.Nombre);
             if (usuarioExiste != null)
             {
                 return BadRequest("El usuario ya existe");
@@ -75,9 +75,9 @@ namespace homesolutionBack.Controllers
             //hashea la contraseña
             var hashedPassword = PasswordHash.Hash(registroDto.Password);
 
-            var newUsuario = new Usuarios
+            var newUsuario = new Usuario
             {
-                Nombre = registroDto.Nombre,
+                NombreUsuario = registroDto.Nombre,
                 CorreoElectronico = registroDto.CorreoElectronico,
                 Password = registroDto.Password,
                 Rol = registroDto.Rol,

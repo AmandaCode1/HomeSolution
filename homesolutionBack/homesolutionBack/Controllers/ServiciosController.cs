@@ -11,10 +11,10 @@ namespace homesolutionBack.Controllers
     public class ServiciosController : ControllerBase
     {
         //declaramos objeto de nuestra base de batos para crud
-        public readonly HomesolutionbdContext _dbcontext;
+        public readonly FreedbHomesolutiondbContext _dbcontext;
 
         //constructor
-        public ServiciosController(HomesolutionbdContext _context)
+        public ServiciosController(FreedbHomesolutiondbContext _context)
         {
             _dbcontext = _context;
         }
@@ -25,7 +25,7 @@ namespace homesolutionBack.Controllers
         public async Task<IActionResult> Servicios()
         {
             //objeto de lista de servicios
-            List<Servicios> servicios = new List<Servicios>();
+            List<Servicio> servicios = new List<Servicio>();
 
             try
             {

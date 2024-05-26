@@ -10,10 +10,10 @@ namespace homesolutionBack.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        public readonly HomesolutionbdContext _dbcontext;
+        public readonly FreedbHomesolutiondbContext _dbcontext;
 
         //constructor
-        public UsuariosController(HomesolutionbdContext _context)
+        public UsuariosController(FreedbHomesolutiondbContext _context)
         {
             _dbcontext = _context;
         }
@@ -28,8 +28,8 @@ namespace homesolutionBack.Controllers
             {
                 var usuario = await _dbcontext.Usuarios.Select(u => new 
                 {
-                    u.UserId,
-                    u.Nombre,
+                    u.UsuarioId,
+                    u.NombreUsuario,
                     u.Rol,
                     u.CorreoElectronico,
                     u.Direccion,
@@ -52,11 +52,11 @@ namespace homesolutionBack.Controllers
             try
             {
                 var usuario = await _dbcontext.Usuarios
-                .Where(u => u.UserId == idUsuario)
+                .Where(u => u.UsuarioId == idUsuario)
                 .Select(u => new
                 {
-                    u.UserId,
-                    u.Nombre,
+                    u.UsuarioId,
+                    u.NombreUsuario,
                     u.Rol,
                     u.CorreoElectronico,
                     u.Direccion,
@@ -93,7 +93,7 @@ namespace homesolutionBack.Controllers
                 //actualizar bd con los valores del dto, si estan vacios se deja el valor anterior
                 if (!string.IsNullOrEmpty(adminEditarUsuarioDto.Nombre))
                 {
-                    usuario.Nombre = adminEditarUsuarioDto.Nombre;
+                    usuario.NombreUsuario = adminEditarUsuarioDto.Nombre;
                 }
                 if (!string.IsNullOrEmpty(adminEditarUsuarioDto.Rol))
                 {
