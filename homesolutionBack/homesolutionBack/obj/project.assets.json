@@ -4320,23 +4320,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Benito\\.nuget\\packages\\": {},
+    "C:\\Users\\AMANDA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Benito\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
+      "projectUniqueName": "C:\\Users\\AMANDA\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
       "projectName": "homesolutionBack",
-      "projectPath": "C:\\Users\\Benito\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
-      "packagesPath": "C:\\Users\\Benito\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Benito\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\obj\\",
+      "projectPath": "C:\\Users\\AMANDA\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\homesolutionBack.csproj",
+      "packagesPath": "C:\\Users\\AMANDA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AMANDA\\Documents\\GitHub\\HomeSolution\\homesolutionBack\\homesolutionBack\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Benito\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AMANDA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

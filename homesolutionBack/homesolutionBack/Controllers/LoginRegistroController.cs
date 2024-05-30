@@ -28,68 +28,85 @@ namespace homesolutionBack.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
-            //hashea la contraseña
-            var hashedPassword = PasswordHash.Hash(loginDto.Password);
-
-            //busca en la bd un usuario que coincida
-            var usuario = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == loginDto.Nombre && u.Password == loginDto.Password);
-            
-            if (usuario == null) 
+            try
             {
-                return Unauthorized("El usuario no existe o la contraseña es incorrecta");
-            }
+                //hashea la contraseña
+                var hashedPassword = PasswordHash.Hash(loginDto.Password);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                //datos para autorizar al usuario
-                Claims = new Dictionary<string, object>
+                //busca en la bd un usuario que coincida
+                var usuario = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == loginDto.Nombre);
+
+                if ((usuario == null) || (usuario.Password != hashedPassword))
+                {
+                    return Unauthorized("El usuario no existe o la contraseña es incorrecta");
+                }
+
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    //datos para autorizar al usuario
+                    Claims = new Dictionary<string, object>
                 {
                     { "id", Guid.NewGuid().ToString() },
                     { "idUsuario", usuario.UsuarioId }
                 },
-                //Expiracion token
-                Expires = DateTime.UtcNow.AddDays(500000),
-                //Clave y algoritmo de cifrado
-                SigningCredentials = new SigningCredentials(
-                    _tokenParameters.IssuerSigningKey, 
-                    SecurityAlgorithms.HmacSha256Signature)
-            };
+                    //Expiracion token
+                    Expires = DateTime.UtcNow.AddDays(500000),
+                    //Clave y algoritmo de cifrado
+                    SigningCredentials = new SigningCredentials(
+                        _tokenParameters.IssuerSigningKey,
+                        SecurityAlgorithms.HmacSha256Signature)
+                };
 
-            //creamos token y devolvemos al usuario logueado
-            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
-            string stringToken = tokenHandler.WriteToken(token);
+                //creamos token y lo devolvemos al usuario logueado
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+                string stringToken = tokenHandler.WriteToken(token);
 
-            return StatusCode(StatusCodes.Status200OK, stringToken);
+                return StatusCode(StatusCodes.Status200OK, stringToken);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al iniciar sesion: {ex.Message}");
+            }
+           
         }
 
         [HttpPost("Registro")]
         public async Task<IActionResult> Registro([FromBody] RegistroDto registroDto)
         {
-            var usuarioExiste = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == registroDto.Nombre);
-            if (usuarioExiste != null)
+            try
             {
-                return BadRequest("El usuario ya existe");
+                var usuarioExiste = await _dbcontext.Usuarios.FirstOrDefaultAsync(u => u.NombreUsuario == registroDto.Nombre);
+                if (usuarioExiste != null)
+                {
+                    return BadRequest("El usuario ya existe");
+                }
+
+                //hashea la contraseña
+                var hashedPassword = PasswordHash.Hash(registroDto.Password);
+
+                var newUsuario = new Usuario
+                {
+                    NombreUsuario = registroDto.Nombre,
+                    CorreoElectronico = registroDto.CorreoElectronico,
+                    Password = hashedPassword,
+                    Rol = registroDto.Rol,
+                    Telefono = registroDto.Telefono,
+                    Direccion = registroDto.Direccion
+                };
+
+                //añade el usuario a la bd y guarda
+                _dbcontext.Usuarios.Add(newUsuario);
+                await _dbcontext.SaveChangesAsync();
+
+                return StatusCode(StatusCodes.Status200OK, "Usuario regisrado correctamente");
+
             }
-
-            //hashea la contraseña
-            var hashedPassword = PasswordHash.Hash(registroDto.Password);
-
-            var newUsuario = new Usuario
+            catch (Exception ex)
             {
-                NombreUsuario = registroDto.Nombre,
-                CorreoElectronico = registroDto.CorreoElectronico,
-                Password = hashedPassword,
-                Rol = registroDto.Rol,
-                Telefono = registroDto.Telefono,
-                Direccion = registroDto.Direccion 
-            };
-
-            //añade el usuario a la bd y guarda
-            _dbcontext.Usuarios.Add(newUsuario);
-            await _dbcontext.SaveChangesAsync();
-
-            return StatusCode(StatusCodes.Status200OK, "Usuario regisrado correctamente");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al registrar el usuario: {ex.Message}");
+            }
         }
 
     }
