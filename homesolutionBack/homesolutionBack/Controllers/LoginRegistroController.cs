@@ -86,6 +86,8 @@ namespace homesolutionBack.Controllers
                 //hashea la contraseña
                 var hashedPassword = PasswordHash.Hash(registroDto.Password);
 
+                string rol = string.IsNullOrEmpty(registroDto.Rol) ? "Usuario" : registroDto.Rol;
+
                 var newUsuario = new Usuario
                 {
                     NombreUsuario = registroDto.Nombre,
