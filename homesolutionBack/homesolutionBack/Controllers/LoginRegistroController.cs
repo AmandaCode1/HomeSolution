@@ -93,7 +93,7 @@ namespace homesolutionBack.Controllers
                     NombreUsuario = registroDto.Nombre,
                     CorreoElectronico = registroDto.CorreoElectronico,
                     Password = hashedPassword,
-                    Rol = registroDto.Rol,
+                    Rol = rol,
                     Telefono = registroDto.Telefono,
                     Direccion = registroDto.Direccion
                 };
