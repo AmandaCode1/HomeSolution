@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-urgencias',
   templateUrl: './urgencias.component.html',
   styleUrls: ['./urgencias.component.css']
 })
-export class UrgenciasComponent {
-[x: string]: any;
+export class UrgenciasComponent implements OnInit {
 
-}
+  constructor(private router: Router) { }
 
-export class Componente24hComponent {
-
-  constructor() { }
-
-
+  ngOnInit() {
+    
+    const ruta = localStorage.getItem('navegarA');
+    if (ruta) {
+      localStorage.removeItem('navegarA'); 
+      this.router.navigateByUrl(ruta); 
+    }
   }
 
+  recargarYnavegar(ruta: string) {
+    localStorage.setItem('navegarA', ruta); 
+    window.location.reload(); 
+  }
+}
