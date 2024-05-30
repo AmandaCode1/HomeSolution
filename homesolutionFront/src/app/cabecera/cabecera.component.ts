@@ -16,24 +16,23 @@ export class CabeceraComponent implements OnInit {
 
   aplicarAnimacion(event: MouseEvent) {
     const target = event.target as HTMLElement;
-
+  
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-      link.classList.remove('animacion-color');
+      link.classList.remove('animacion-raya');
     });
-
-    target.classList.add('animacion-color');
-
+  
+    target.classList.add('animacion-raya');
+  
     setTimeout(() => {
-      target.classList.remove('animacion-color');
+      target.classList.remove('animacion-raya');
     }, 50000); 
   }
-
   desactivarAnimacion(event: MouseEvent) {
 
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-      link.classList.remove('animacion-color');
+      link.classList.remove('animacion-raya');
     });
   }
 

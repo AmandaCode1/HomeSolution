@@ -13,8 +13,9 @@ export class SesionService {
     setTimeout(() => {
       
       this.router.navigate(['/homesolution']); 
+      
           }, 1000);
-         
+          window.location.reload();
   }
 
   cerrarSesion(): void {

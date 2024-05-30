@@ -48,7 +48,7 @@ namespace homesolutionBack.Controllers
                     { "idUsuario", usuario.UsuarioId }
                 },
                 //Expiracion token
-                Expires = DateTime.UtcNow.AddDays(200),
+                Expires = DateTime.UtcNow.AddDays(500000),
                 //Clave y algoritmo de cifrado
                 SigningCredentials = new SigningCredentials(
                     _tokenParameters.IssuerSigningKey, 
@@ -79,10 +79,10 @@ namespace homesolutionBack.Controllers
             {
                 NombreUsuario = registroDto.Nombre,
                 CorreoElectronico = registroDto.CorreoElectronico,
-                Password = registroDto.Password,
+                Password = hashedPassword,
                 Rol = registroDto.Rol,
                 Telefono = registroDto.Telefono,
-                Direccion = hashedPassword
+                Direccion = registroDto.Direccion 
             };
 
             //añade el usuario a la bd y guarda

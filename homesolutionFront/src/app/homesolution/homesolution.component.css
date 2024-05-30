@@ -1,13 +1,14 @@
 
 .header-img {
   width: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1; 
-  opacity: 0.6; 
+  z-index: -1;
+  opacity: 0.6;
+  object-fit: cover; 
 }
-
 
 .history-section,
 .owners-section {
@@ -15,29 +16,29 @@
   z-index: 5;
 }
 
-.container-fluid
-{
-margin-top: 5%;
+.container-fluid {
+  margin-top: 5%;
 }
 
 .logo {
   margin-top: 10%;
   width: 30%;
-  margin: 0 auto; 
+  margin: 0 auto;
   display: block;
   border-radius: 50%;
-  animation: fadeIn 2s ease forwards; 
+  animation: fadeIn 2s ease forwards;
+}
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: scale(0.5);
+    opacity: 0;
+    transform: scale(0.5);
   }
   to {
-      opacity: 1;
-      transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
   }
-}}
+}
 
 @keyframes animacion-letras {
   0% {
@@ -55,14 +56,12 @@ margin-top: 5%;
   animation: animacion-letras 2s infinite alternate;
 }
 
-/* Estilos para los textos */
 .custom-box {
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para resaltar los textos */
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
-
 
 @keyframes fadeInUp {
   0% {
@@ -75,18 +74,77 @@ margin-top: 5%;
   }
 }
 
-
 header h1 {
-  font-family: 'Montserrat', sans-serif; 
-  font-weight: 700; 
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   font-size: 48px;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 
-      -1px -1px 0 #ffffff,  
-      1px -1px 0  #ffffff,
-      -1px 1px 0  #ffffff,
-      1px 1px 0  #ffffff; 
+  text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
 }
 
+/*******************************************Responsive*********************************************/
+@media (max-width: 575.98px) {
+  .logo {
+    width: 70%;
+    margin-top: 20%;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .custom-box {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .logo {
+    width: 50%;
+    margin-top: 15%;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  .custom-box {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .logo {
+    width: 40%;
+    margin-top: 10%;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .custom-box {
+    padding: 18px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .logo {
+    width: 30%;
+    margin-top: 10%;
+  }
+
+  header h1 {
+    font-size: 48px;
+  }
+
+  .custom-box {
+    padding: 20px;
+    font-size: 20px;
+  }
+}

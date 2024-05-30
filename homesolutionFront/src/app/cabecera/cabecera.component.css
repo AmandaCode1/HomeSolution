@@ -17,22 +17,20 @@
     100% { background-color: rgba(71, 216, 252, 0.758); } 
   }
   
-/* Estilos para el encabezado */
 .sticky-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff; /* Cambia el color de fondo según tus preferencias */
-  z-index: 1000; /* Asegura que el encabezado esté por encima del contenido */
+  background-color: #fff; 
+  z-index: 1000;
 }
 
-/* Estilos para el contenido principal */
+
 .main-content {
-  margin-top: 80px; /* Ajusta este valor según la altura de tu encabezado para evitar superposiciones */
+  margin-top: 80px;
 }
 
-/* Ajustes adicionales */
 .navbar-brand {
   margin-left: 8px;
 }
@@ -43,4 +41,34 @@
 
 .nav-item {
   margin-right: 15px;
+}
+
+
+.nav-link {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-link.animacion-raya {
+  display: inline-block;
+}
+
+.nav-link.animacion-raya::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: rgb(43, 141, 165); 
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }

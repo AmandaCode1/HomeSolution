@@ -1,5 +1,5 @@
 export interface RegistroDto{
-
+    repeatPassword: string;
     nombre:string;
     correoElectronico:string;
     password:string;

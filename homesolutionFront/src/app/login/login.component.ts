@@ -22,7 +22,8 @@ export class LoginComponent {
     password: '',
     rol: '',
     telefono: '',
-    direccion: ''
+    direccion: '',
+    repeatPassword: ''
   };
   loginDto: LoginDto = {
     nombre: '',
@@ -39,6 +40,11 @@ export class LoginComponent {
     this.iniciarSesion = !this.iniciarSesion;
   }
   registro(): void {
+    if (this.registroDto.password !== this.registroDto.repeatPassword) {
+      console.log('Las contraseñas no coinciden.');
+      return;
+    }
+  
     this.loginRegistroService.registro(this.registroDto).subscribe(
       response => {
         console.log('Usuario registrado correctamente.');
@@ -49,7 +55,9 @@ export class LoginComponent {
       }
     );
   }
+  
   login(): void {
+    
     this.loginRegistroService.login(this.loginDto).subscribe(
       token => {
         this.sesionService.iniciarSesion(token);

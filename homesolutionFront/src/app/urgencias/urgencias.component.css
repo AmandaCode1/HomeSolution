@@ -1,60 +1,42 @@
 
-  .header-img {
-    width: 20%;
-  }
-  
-  .info-section,
-  .contact-section {
-    margin-bottom: 40px;
-  }
-
-  
-  .whatsapp-section {
-    margin-top: 40px;
-  }
-  
-  .history-section {
-    padding: 50px 0;
-  }
-  
 .header-img {
   width: 100%;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1; 
-  width: 100%;
-  opacity: 0.6; 
+  z-index: -1;
+  opacity: 0.6;
+  object-fit: cover;
 }
 
 .header {
   margin-top: 20px;
   margin-bottom: 20px;
- text-align: center;
+  text-align: center;
 }
 
- .info-section{
+.info-section {
   border: 2px solid #007bff;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
-  font-family: 'Roboto', sans-serif; 
-  animation: fadeInUp 1s ease; 
-  background-color: white; 
+  font-family: 'Roboto', sans-serif;
+  animation: fadeInUp 1s ease;
+  background-color: white;
 }
+
 .horas {
   width: 30%;
   border-radius: 15px;
- border-color: aqua;
- border: 3px;
- transition: transform 0.3s ease; 
+  border: 3px solid rgb(17, 47, 195);
+  transition: transform 0.3s ease;
 }
+
 .horas:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
-
-/* Estilos para el fondo de video */
 .background-video {
   position: fixed;
   right: 0;
@@ -64,13 +46,112 @@
   z-index: -1;
 }
 
-/* Estilos para el contenido */
 .content {
   position: relative;
-  z-index: 1; /* Asegura que el contenido esté sobre el video */
+  z-index: 1;
 }
 
-.contact-section{
- font: bold;
-color: white;
+.contact-section {
+  font-weight: bold;
+  color: white;
+}
+
+
+@media (max-width: 575.98px) {
+  .container {
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  .horas {
+    width: 50%;
+  }
+
+  .info-section {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  ul li {
+    font-size: 16px;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container {
+    padding: 15px;
+    margin: 30px auto;
+  }
+
+  .horas {
+    width: 40%;
+  }
+
+  .info-section {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p, ul li {
+    font-size: 17px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    padding: 18px;
+    margin: 40px auto;
+  }
+
+  .horas {
+    width: 35%;
+  }
+
+  .info-section {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p, ul li {
+    font-size: 18px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .container {
+    padding: 20px;
+    margin: 50px auto;
+  }
+
+  .horas {
+    width: 30%;
+  }
+
+  .info-section {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  p, ul li {
+    font-size: 18px;
+  }
 }
