@@ -22,6 +22,8 @@ public partial class FreedbHomesolutiondbContext : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
+    public virtual DbSet<UsuariosOferta> UsuariosOfertas { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=sql.freedb.tech;port=3306;database=freedb_homesolutiondb;uid=freedb_amanda;pwd=C8XQUCQTas5@%%X", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.36-mysql"));
@@ -75,26 +77,28 @@ public partial class FreedbHomesolutiondbContext : DbContext
             entity.Property(e => e.Telefono).HasMaxLength(15);
 
             entity.HasMany(d => d.Oferta).WithMany(p => p.Usuarios)
-                .UsingEntity<Dictionary<string, object>>(
-                    "UsuariosOferta",
-                    r => r.HasOne<Oferta>().WithMany()
-                        .HasForeignKey("OfertaId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("Usuarios_Ofertas_ibfk_2"),
-                    l => l.HasOne<Usuario>().WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("Usuarios_Ofertas_ibfk_1"),
+                .UsingEntity<UsuariosOferta>(
+                    j => j.HasOne(pt => pt.Oferta).WithMany(t => t.UsuariosOfertas).HasForeignKey(pt => pt.OfertaId),
+                    j => j.HasOne(pt => pt.Usuario).WithMany(p => p.UsuariosOfertas).HasForeignKey(pt => pt.UsuarioId),
                     j =>
                     {
-                        j.HasKey("UsuarioId", "OfertaId")
-                            .HasName("PRIMARY")
-                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                        j.HasKey(t => new { t.UsuarioId, t.OfertaId });
                         j.ToTable("Usuarios_Ofertas");
                         j.HasIndex(new[] { "OfertaId" }, "OfertaID");
-                        j.IndexerProperty<int>("UsuarioId").HasColumnName("UsuarioID");
-                        j.IndexerProperty<int>("OfertaId").HasColumnName("OfertaID");
                     });
+        });
+
+        modelBuilder.Entity<UsuariosOferta>(entity =>
+        {
+            entity.HasKey(e => new { e.UsuarioId, e.OfertaId });
+
+            entity.HasOne(e => e.Usuario)
+                .WithMany(u => u.UsuariosOfertas)
+                .HasForeignKey(e => e.UsuarioId);
+
+            entity.HasOne(e => e.Oferta)
+                .WithMany(o => o.UsuariosOfertas)
+                .HasForeignKey(e => e.OfertaId);
         });
 
         OnModelCreatingPartial(modelBuilder);

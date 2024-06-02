@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace homesolutionBack.Models;
 
 public partial class Usuario
 {
+    
     public int UsuarioId { get; set; }
 
     public string NombreUsuario { get; set; } = null!;
@@ -20,4 +22,6 @@ public partial class Usuario
     public string? Direccion { get; set; }
 
     public virtual ICollection<Oferta> Oferta { get; set; } = new List<Oferta>();
+  
+    public ICollection<UsuariosOferta> UsuariosOfertas { get; set; }
 }
