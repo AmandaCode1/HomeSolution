@@ -17,6 +17,13 @@ namespace homesolutionBack
             // Add services to the container.
 
             builder.Services.AddControllers();
+                //incluyo serializacion para el ciclo de referencia circular al buscar la oferta de un usuario
+              /*  .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.MaxDepth = 64; // Aumenta la profundidad si es necesario
+            });*/
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -67,6 +74,7 @@ namespace homesolutionBack
                 app.UseSwaggerUI();
 
                 app.UseCors();
+                //app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();

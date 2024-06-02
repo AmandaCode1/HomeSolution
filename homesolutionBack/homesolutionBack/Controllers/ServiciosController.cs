@@ -78,7 +78,7 @@ namespace homesolutionBack.Controllers
                 var categoriasValidas = new[] { "electricidad", "fontaneria", "climatizacion", "pladur" };
                 if (!categoriasValidas.Contains(crearServicioDto.CategoriaServicio.ToLower()))
                 {
-                    return BadRequest("La categoria no existe");
+                    return BadRequest("La categoria no existe, debe ser electricidad, fontaneria, climatizacion o pladur");
                 }
 
                 var servicio = new Servicio
@@ -154,7 +154,7 @@ namespace homesolutionBack.Controllers
 
                 if (servicio == null)
                 {
-                    return NotFound($"Usuario con ID {idServicio} no encontrado");
+                    return NotFound($"Servicio con ID {idServicio} no encontrado");
 
                 }
 
