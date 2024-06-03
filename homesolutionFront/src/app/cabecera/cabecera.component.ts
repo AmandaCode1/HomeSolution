@@ -49,11 +49,8 @@ export class CabeceraComponent implements OnInit {
   }
 
   cambiarIdioma() {
-   
     this.iconoIdioma = this.idiomaActual === 'es' ? 'en' : 'es';
     this.idiomaActual = this.idiomaActual === 'es' ? 'en' : 'es';
-   
-    
     this.translate.use(this.idiomaActual);
   }
 }

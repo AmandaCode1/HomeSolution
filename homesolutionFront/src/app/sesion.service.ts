@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class SesionService {
+  obtenerNombreUsuario(): string {
+    throw new Error('Method not implemented.');
+  }
 
 
   constructor(private router: Router,) { }
@@ -29,3 +32,4 @@ export class SesionService {
     return !!localStorage.getItem('token');
   }
 }
+  

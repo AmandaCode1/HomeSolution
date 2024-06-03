@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-urgencias',
@@ -8,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class UrgenciasComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private translate: TranslateService) {
+
+    this.translate.setDefaultLang('es');
+    this.translate.use('es'); 
+   }
 
   ngOnInit() {
     

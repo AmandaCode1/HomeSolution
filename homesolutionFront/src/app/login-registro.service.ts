@@ -12,8 +12,8 @@ export class LoginRegistroService {
 
   constructor(private http: HttpClient) { }
 
-  registro(registroDto: RegistroDto): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/Registro`, registroDto);
+  registro(datosRegistro: any): Observable<any> {
+    return this.http.post('https://localhost:7161/api/LoginRegistro/Registro', datosRegistro);
   }
 
   login(loginDto: LoginDto): Observable<string> {

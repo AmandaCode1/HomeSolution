@@ -7,11 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./homesolution.component.css']
 })
 export class HomesolutionComponent implements OnInit {
-   constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
-   
-    this.translate.setDefaultLang('es');
-    this.translate.use('es');
+    const idiomaActual = localStorage.getItem('idioma') || 'es';
+    this.translate.setDefaultLang(idiomaActual);
+    this.translate.use(idiomaActual);
   }
 }

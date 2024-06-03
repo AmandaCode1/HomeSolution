@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { LoginRegistroService } from './login-registro.service';
 import { UrgenciasComponent } from './urgencias/urgencias.component';
-import { ContactosComponent } from './contactos/contactos.component';
+import { ContactoComponent } from './contactos/contactos.component';
 import { HomesolutionComponent } from './homesolution/homesolution.component';
 import { QuehacemosComponent } from './quehacemos/quehacemos.component';
 import { LoginComponent } from './login/login.component';
@@ -23,7 +23,7 @@ import { PreloadComponent } from './preload/preload.component';
     AppComponent,
     CabeceraComponent,
     UrgenciasComponent,
-    ContactosComponent,
+    ContactoComponent,
     HomesolutionComponent,
     QuehacemosComponent,
     LoginComponent,
