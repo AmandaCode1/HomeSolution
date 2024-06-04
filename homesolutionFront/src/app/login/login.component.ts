@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   iniciarSesion: boolean = true;
   ConectarSesion: string = '';
   nombre: string = '';
-  errorMessage: string = '';  // Variable para almacenar el mensaje de error
+  errorMessage: string = ''; 
   errorMessage2: string = '';
   registroDto = {
     nombre: '',
@@ -52,57 +52,60 @@ export class LoginComponent implements OnInit {
   }
 
   validarCorreoElectronico(): void {
-    // Validar el correo electrónico antes de enviar el formulario
- 
+
     const correoElectronico = this.registroDto.correoElectronico;
     if (!correoElectronico.includes('@')) {
       this.errorMessage = 'El correo electrónico debe contener "@"';
     } else {
-      this.errorMessage = ''; // Limpiar el mensaje de error si el correo es válido
+      this.errorMessage = ''; 
     }
   }
 
-  registro(): void {
-    this.validarCorreoElectronico(); // Validar el correo electrónico antes de continuar
-    if (this.errorMessage) {
-      return; // Detener el registro si hay un error de validación en el correo electrónico
-    }
-    if (this.registroDto.password !== this.registroDto.repeatPassword) {
-      this.errorMessage = 'Las contraseñas no coinciden.';
-      return;
-    }
-    if (this.registroDto.telefono && this.registroDto.telefono.length !== 9) {
-      this.errorMessage = 'El teléfono debe contener 9 números.';
-      return;
-    }
-    this.loginRegistroService.registro(this.registroDto).subscribe(
-      response => {
-        console.log('Usuario registrado correctamente.');
-        this.errorMessage = '';  // Limpiar el mensaje de error después del registro exitoso
-        // Mostrar mensaje de registro exitoso
-        this.ConectarSesion = 'Usuario registrado correctamente.';
-        // Redirigir a la página de inicio después de un breve retraso
-        setTimeout(() => {
-          this.ConectarSesion = ''; // Limpiar el mensaje después de 2 segundos
-          this.router.navigate(['/homesolution']); // Redirigir a la página de inicio
-        }, 2000); // Redirigir después de 2 segundos (2000 milisegundos)
-      },
-      error => {
-        console.log('Error al registrar el usuario.');
-        console.error(error);
-      }
-    );
+
+registro(): void {
+  
+  if (!this.registroDto.nombre || !this.registroDto.correoElectronico || !this.registroDto.password || !this.registroDto.repeatPassword || !this.registroDto.telefono || !this.registroDto.direccion) {
+    this.errorMessage = 'Todos los campos son obligatorios.';
+    return;
   }
+
+  this.validarCorreoElectronico(); 
+  if (this.errorMessage) {
+    return; 
+  }
+  if (this.registroDto.password !== this.registroDto.repeatPassword) {
+    this.errorMessage = 'Las contraseñas no coinciden.';
+    return;
+  }
+
+  this.loginRegistroService.registro(this.registroDto).subscribe(
+    response => {
+      console.log('Usuario registrado correctamente.');
+      this.errorMessage = '';  
+    
+      this.ConectarSesion = 'Usuario registrado correctamente.';
+     
+      setTimeout(() => {
+        this.ConectarSesion = ''; 
+        location.reload(); 
+      }, 2000);
+    },
+    error => {
+      console.log('Error al registrar el usuario.');
+      console.error(error);
+    }
+  );
+}  
   
 
   login(): void {
     this.loginRegistroService.login(this.loginDto).subscribe(
       response => {
-        this.sesionService.iniciarSesion(response);  // Almacenar token en el servicio de sesión
+        this.sesionService.iniciarSesion(response);  
         this.autenticado = true;
         this.ConectarSesion = 'Sesión iniciada correctamente';
-        this.nombre = this.loginDto.nombre;  // Asignar el nombre del usuario desde el formulario de login
-        localStorage.setItem('nombreUsuario', this.nombre);  // Guardar nombre del usuario en almacenamiento local
+        this.nombre = this.loginDto.nombre;  
+        localStorage.setItem('nombreUsuario', this.nombre); 
         console.log('Nombre del usuario:', this.nombre);
       },
       error => {
@@ -116,6 +119,6 @@ export class LoginComponent implements OnInit {
     this.sesionService.cerrarSesion();
     this.autenticado = false;
     this.ConectarSesion = 'Sesión cerrada correctamente.';
-    localStorage.removeItem('nombreUsuario');  // Eliminar el nombre del usuario del almacenamiento local
+    localStorage.removeItem('nombreUsuario');  
   }
 }

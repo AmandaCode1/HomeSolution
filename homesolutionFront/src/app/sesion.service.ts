@@ -8,7 +8,6 @@ export class SesionService {
     throw new Error('Method not implemented.');
   }
 
-
   constructor(private router: Router,) { }
 
   iniciarSesion(token: string): void {

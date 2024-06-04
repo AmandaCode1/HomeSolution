@@ -54,6 +54,7 @@
             <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> <!-- Mensaje de error -->
             <button type="submit" class="submit-btn">{{ 'Registrar' | translate }}</button>
           </form>
+          <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
         </ng-template>
 
         <div class="auth-toggle">

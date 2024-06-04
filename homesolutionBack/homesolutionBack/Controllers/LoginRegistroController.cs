@@ -101,8 +101,8 @@ namespace homesolutionBack.Controllers
                 //añade el usuario a la bd y guarda
                 _dbcontext.Usuarios.Add(newUsuario);
                 await _dbcontext.SaveChangesAsync();
-
-                return StatusCode(StatusCodes.Status200OK, "Usuario regisrado correctamente");
+                return Ok(new { message = "Usuario registrado correctamente" });
+                //return StatusCode(StatusCodes.Status200OK, "Usuario regisrado correctamente");
 
             }
             catch (Exception ex)

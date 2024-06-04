@@ -141,7 +141,6 @@ input:focus {
   animation: fadeIn 1s ease;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -172,6 +171,8 @@ input:focus {
     transform: translateY(0);
   }
 }
+
+/*******************************************Responsive*********************************************/
 
 @media (max-width: 575.98px) {
   .auth-container {
