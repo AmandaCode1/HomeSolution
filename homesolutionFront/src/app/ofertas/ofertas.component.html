@@ -1,2 +1,17 @@
-
-<img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+<div>
+    <img src="assets/fondo.jpg" alt="Imagen de Encabezado" class="header-img">
+    <div class="container">
+        <h1>Ofertas</h1>
+        <div *ngIf="ofertas.length > 0; else noData">
+            <div *ngFor="let oferta of ofertas" class="data-block">
+                <div class="data-content">
+                    <p><strong>Oferta:</strong> {{oferta.descripcionOferta}}</p>
+                    <p><strong>Categoría:</strong> {{oferta.categoriaServicio}}</p>
+                </div>
+            </div>
+        </div>  
+        <ng-template #noData>
+            <p>No hay ofertas disponibles en este momento.</p>
+        </ng-template>
+    </div>
+</div>

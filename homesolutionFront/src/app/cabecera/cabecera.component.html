@@ -13,16 +13,19 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" *ngIf="autenticado && rol === 'Admin'">
+            <a class="nav-link" routerLink="/admin" (click)="aplicarAnimacion($event)">{{ 'admin' | translate }}</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/quehacemos" (click)="aplicarAnimacion($event)">{{ 'Qué Hacemos' | translate }}</a>
-          </li>
+          </li> 
           <li class="nav-item">
             <a class="nav-link" routerLink="/urgencias" (click)="aplicarAnimacion($event)">{{ 'Urgencias 24H' | translate }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/contactos" (click)="aplicarAnimacion($event)">{{ 'Contacto' | translate }}</a>
           </li>
-          <li class="nav-item" *ngIf="autenticado">
+          <li class="nav-item" *ngIf="autenticado && rol === 'Usuario'">
             <a class="nav-link" routerLink="/ofertas" (click)="aplicarAnimacion($event)">{{ 'Ofertas' | translate }}</a>
           </li>
         </ul>

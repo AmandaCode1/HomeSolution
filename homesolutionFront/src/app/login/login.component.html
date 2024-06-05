@@ -18,6 +18,7 @@
               <input type="password" [(ngModel)]="loginDto.password" name="password" required>
             </div>
             <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
+            <div *ngIf="loginErrorMessage" class="error-message">{{ loginErrorMessage }}</div>
             <button type="submit" class="submit-btn">{{ 'Iniciar Sesión' | translate }}</button>
           </form>
         </div>
@@ -51,7 +52,7 @@
               <label>{{ 'Dirección' | translate }}</label>
               <input type="text" [(ngModel)]="registroDto.direccion" name="direccion" required>
             </div>
-            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> <!-- Mensaje de error -->
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> 
             <button type="submit" class="submit-btn">{{ 'Registrar' | translate }}</button>
           </form>
           <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>

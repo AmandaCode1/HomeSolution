@@ -1,16 +1,58 @@
 .header-img {
-    width: 100%;
-  }
-  .history-section {
-    padding: 50px 0;
-  }
-  
-.header-img {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1; 
-  width: 100%;
   opacity: 0.6; 
+}
+
+.container {
+  margin-top: 100px; /* Ajuste para la imagen de encabezado */
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.data-block {
+  display: inline-block;
+  width: 40%;
+  height: 40%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.data-block:hover {
+  background-color: #86abd3; /* Color azul */
+  animation: bounceRotate 1s infinite;
+}
+
+@keyframes bounceRotate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.data-content {
+  font-size: 18px;
+  color: #2c3237;
+}
+
+.data-content strong {
+  color: #ffffff; /* Cambiar a blanco para mejor contraste en azul */
 }

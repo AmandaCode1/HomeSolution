@@ -16,6 +16,7 @@ import { QuehacemosComponent } from './quehacemos/quehacemos.component';
 import { LoginComponent } from './login/login.component';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { PreloadComponent } from './preload/preload.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PreloadComponent } from './preload/preload.component';
     QuehacemosComponent,
     LoginComponent,
     OfertasComponent,
-    PreloadComponent
+    PreloadComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

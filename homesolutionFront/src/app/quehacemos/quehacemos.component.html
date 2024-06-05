@@ -1,22 +1,19 @@
 <div><img src="assets/fondo.jpg" alt="Header Image" class="header-img">
-<div class="container">
+
+  <div class="container">
+
     <h1>Qué Hacemos</h1>
     <div *ngIf="data.length > 0; else noData">
-      <ul>
-        <li *ngFor="let item of data">
+
+      <div *ngFor="let item of data" class="data-block">
+        <div class="data-content">
           <h2>{{ item.nombre }}</h2>
-          <p><strong>Descripción:</strong> {{ item.descripcion }}</p>
-          <p><strong>Precio:</strong> {{ item.precio | currency }}</p>
-          <p><strong>Duración Estimada:</strong> {{ item.duracionEstimada }} minutos</p>
-          <p><strong>Categoría:</strong> {{ item.categoria }}</p>
-          <p><strong>Solicitud de Servicios:</strong></p>
-          <ul>
-            <li *ngFor="let solicitud of item.solicitudServicios">
-              {{ solicitud }} 
-            </li>
-          </ul>
-        </li>
-      </ul>
+          <p><strong>Descripción:</strong> {{ item.descripcionServicio }}</p>
+          <p><strong>Precio:</strong> {{ item.precio }}€</p>
+          <p><strong>Duración Estimada:</strong> {{ item.duracion }} Horas</p>
+          <p><strong>Categoría:</strong> {{ item.categoriaServicio }}</p>
+        </div>
+      </div>
     </div>
     <ng-template #noData>
       <p>No hay datos disponibles.</p>

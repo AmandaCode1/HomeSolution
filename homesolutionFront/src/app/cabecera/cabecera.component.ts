@@ -9,39 +9,32 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CabeceraComponent implements OnInit {
   autenticado: boolean = false;
+  rol: string | null = null;
   isCollapsed: boolean = true;
-  idiomaActual: string = 'es'; 
-  iconoIdioma: string = 'en'; 
+  idiomaActual: string = 'es';
+  iconoIdioma: string = 'en';
 
   constructor(
     private sesionService: SesionService,
-    private translate: TranslateService 
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.autenticado = this.sesionService.estaAutenticado();
+    this.rol = this.sesionService.obtenerRol();
   }
 
   aplicarAnimacion(event: MouseEvent) {
     const target = event.target as HTMLElement;
-  
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.classList.remove('animacion-raya');
-    });
-  
+    navLinks.forEach(link => link.classList.remove('animacion-raya'));
     target.classList.add('animacion-raya');
-  
-    setTimeout(() => {
-      target.classList.remove('animacion-raya');
-    }, 50000); 
+    setTimeout(() => target.classList.remove('animacion-raya'), 50000);
   }
 
   desactivarAnimacion(event: MouseEvent) {
     const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.classList.remove('animacion-raya');
-    });
+    navLinks.forEach(link => link.classList.remove('animacion-raya'));
   }
 
   toggleCollapse() {

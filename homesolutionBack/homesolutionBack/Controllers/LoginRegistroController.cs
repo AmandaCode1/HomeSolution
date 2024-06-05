@@ -47,7 +47,8 @@ namespace homesolutionBack.Controllers
                     Claims = new Dictionary<string, object>
                 {
                     { "id", Guid.NewGuid().ToString() },
-                    { "idUsuario", usuario.UsuarioId }
+                    { "idUsuario", usuario.UsuarioId },
+                    { "rol", usuario.Rol }
                 },
                     //Expiracion token
                     Expires = DateTime.UtcNow.AddDays(500000),
@@ -62,7 +63,7 @@ namespace homesolutionBack.Controllers
                 SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
                 string stringToken = tokenHandler.WriteToken(token);
 
-                return StatusCode(StatusCodes.Status200OK, stringToken);
+                return Ok(new { token = stringToken, rol = usuario.Rol });
 
             }
             catch (Exception ex)

@@ -1,0 +1,13 @@
+<!-- admin.component.html -->
+<div>
+    <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+    <br>
+    <br>
+<h2>Nueva Oferta</h2>
+<form (submit)="crearOferta()">
+  Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta" required><br>
+  Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio" required><br>
+  Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId" required><br>
+  <button type="submit">Crear Oferta</button>
+</form>
+</div>

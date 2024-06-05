@@ -12,11 +12,11 @@ export class LoginRegistroService {
 
   constructor(private http: HttpClient) { }
 
-  registro(datosRegistro: any): Observable<any> {
-    return this.http.post('https://localhost:7161/api/LoginRegistro/Registro', datosRegistro);
+  login(loginDto: { nombre: string, password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/Login`, loginDto);
   }
 
-  login(loginDto: LoginDto): Observable<string> {
-    return this.http.post(`${this.apiUrl}/Login`, loginDto, { responseType: 'text' });
+  register(registroDto: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/Registro`, registroDto);
   }
 }
