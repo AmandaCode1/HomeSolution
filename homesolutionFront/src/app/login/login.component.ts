@@ -4,6 +4,7 @@ import { LoginDto } from '../loginDto.model';
 import { LoginRegistroService } from '../login-registro.service';
 import { SesionService } from '../sesion.service';
 import { TranslateService } from '@ngx-translate/core';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class LoginComponent implements OnInit {
   iniciarSesion: boolean = true;
   ConectarSesion: string = '';
+  ConectarSesion2: string = '';
   nombre: string = '';
   errorMessage: string = '';
   errorMessage2: string = '';
@@ -77,10 +79,8 @@ export class LoginComponent implements OnInit {
 
     this.loginRegistroService.register(this.registroDto).subscribe(
       response => {
-        this.errorMessage = '';
         this.ConectarSesion = 'Usuario registrado correctamente.';
         setTimeout(() => {
-          this.ConectarSesion = '';
           location.reload();
         }, 2000);
       },
@@ -93,14 +93,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    this.ConectarSesion = 'Sesión iniciada correctamente';
+    
     this.loginRegistroService.login(this.loginDto).subscribe(
       response => {
         this.sesionService.iniciarSesion(response.token, response.rol);
         this.autenticado = true;
-        this.ConectarSesion = 'Sesión iniciada correctamente';
         this.nombre = this.loginDto.nombre;
         localStorage.setItem('nombreUsuario', this.nombre);
-        window.location.reload()
+     
+     
+       
       },
       error => {
         this.loginErrorMessage = 'Usuario o contraseña incorrecta';

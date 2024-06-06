@@ -4,3 +4,9 @@ export interface OfertaDto {
   categoriaServicio: string;
   servicioId: number;
 }
+
+export interface AdminEditarOfertaDto {
+  descripcionOferta: string;
+  categoriaServicio: string;
+  servicioId: number;
+}

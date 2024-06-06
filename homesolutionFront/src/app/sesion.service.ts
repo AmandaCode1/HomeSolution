@@ -10,7 +10,7 @@ export class SesionService {
   iniciarSesion(token: string, rol: string): void {
     localStorage.setItem('token', token);
     localStorage.setItem('rol', rol);
-    this.router.navigate(['/homesolution']);
+  
   }
 
   cerrarSesion(): void {

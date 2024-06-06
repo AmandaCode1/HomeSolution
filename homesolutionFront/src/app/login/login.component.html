@@ -18,6 +18,8 @@
               <input type="password" [(ngModel)]="loginDto.password" name="password" required>
             </div>
             <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
+
+            <div *ngIf="ConectarSesion2" class="welcome-message">{{ ConectarSesion }}</div>
             <div *ngIf="loginErrorMessage" class="error-message">{{ loginErrorMessage }}</div>
             <button type="submit" class="submit-btn">{{ 'Iniciar Sesión' | translate }}</button>
           </form>

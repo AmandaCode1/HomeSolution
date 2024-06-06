@@ -1,13 +1,40 @@
 <!-- admin.component.html -->
-<div>
     <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
-    <br>
-    <br>
-<h2>Nueva Oferta</h2>
-<form (submit)="crearOferta()">
-  Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta" required><br>
-  Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio" required><br>
-  Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId" required><br>
-  <button type="submit">Crear Oferta</button>
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="fade-in">
+        <h2>Nueva Oferta</h2>
+        <form (submit)="crearOferta()">
+          Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta" required><br>
+          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio" required><br>
+          Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId" required><br>
+          <button type="submit">Crear Oferta</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fade-in">
+        <h2>Eliminar Oferta</h2>
+        <form (submit)="eliminarOferta(ofertaId)">
+          ID de la Oferta a Eliminar: <input type="number" name="ofertaId" [(ngModel)]="ofertaId" required><br>
+          <button type="submit">Eliminar Oferta</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fade-in">
+        <h2>Editar Oferta</h2>
+        <form (submit)="guardarCambios()">
+          ID de la Oferta a Editar: <input type="number" name="ofertaId" [(ngModel)]="ofertaId" required><br>
+          Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="ofertaEditada.descripcionOferta"><br>
+          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="ofertaEditada.categoriaServicio"><br>
+          Servicio ID: <input type="number" name="servicioId" [(ngModel)]="ofertaEditada.servicioId"><br>
+          <button type="submit">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
