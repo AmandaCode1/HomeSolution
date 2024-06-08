@@ -91,9 +91,9 @@ namespace homesolutionBack.Controllers
                 }
 
                 //actualizar bd con los valores del dto, si estan vacios se deja el valor anterior
-                if (!string.IsNullOrEmpty(adminEditarUsuarioDto.Nombre))
+                if (!string.IsNullOrEmpty(adminEditarUsuarioDto.NombreUsuario))
                 {
-                    usuario.NombreUsuario = adminEditarUsuarioDto.Nombre;
+                    usuario.NombreUsuario = adminEditarUsuarioDto.NombreUsuario;
                 }
                 if (!string.IsNullOrEmpty(adminEditarUsuarioDto.Rol))
                 {
@@ -114,7 +114,7 @@ namespace homesolutionBack.Controllers
 
                 await _dbcontext.SaveChangesAsync();
 
-                return StatusCode(StatusCodes.Status200OK, $"Usuario con ID {idUsuario} editado correctamente");
+                return StatusCode(StatusCodes.Status200OK, new { message = $"Usuario con ID {idUsuario} editado correctamente" });
 
             }
             catch (Exception e)

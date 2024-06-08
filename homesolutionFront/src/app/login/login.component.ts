@@ -4,7 +4,6 @@ import { LoginDto } from '../loginDto.model';
 import { LoginRegistroService } from '../login-registro.service';
 import { SesionService } from '../sesion.service';
 import { TranslateService } from '@ngx-translate/core';
-import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +13,8 @@ import { timeout } from 'rxjs';
 export class LoginComponent implements OnInit {
   iniciarSesion: boolean = true;
   ConectarSesion: string = '';
-  ConectarSesion2: string = '';
   nombre: string = '';
   errorMessage: string = '';
-  errorMessage2: string = '';
   loginErrorMessage: string = '';
   registroDto = {
     nombre: '',
@@ -34,7 +31,7 @@ export class LoginComponent implements OnInit {
   };
   autenticado: boolean = false;
 
-  constructor(    
+  constructor(
     private loginRegistroService: LoginRegistroService,
     private sesionService: SesionService,
     private translate: TranslateService,
@@ -85,42 +82,43 @@ export class LoginComponent implements OnInit {
         }, 2000);
       },
       error => {
-        this.errorMessage2 ='Usuario o contraseña incorrecta'
+        this.errorMessage = 'Error al registrar el usuario.';
         console.log('Error al registrar el usuario.');
         console.error(error);
       }
     );
   }
 
-  login():void {
-    this.ConectarSesion = 'Sesión iniciada correctamente';
-    
-    setTimeout(() => { 
-      this.loginRegistroService.login(this.loginDto).subscribe(
-        response => {
-          this.sesionService.iniciarSesion(response.token, response.rol);
-          this.autenticado = true;
-          this.nombre = this.loginDto.nombre;
-          localStorage.setItem('nombreUsuario', this.nombre);
-          window.location.reload()
-        },
-        error => {
-          this.loginErrorMessage = 'Usuario o contraseña incorrecta';
-          console.log('Error al iniciar sesión.');
-          console.error(error);
-        }
-      );
-    }, 2000); 
-   
+  async login(): Promise<void> {
+    this.ConectarSesion = '';
+    this.loginErrorMessage = '';
+
+    try {
+      const response = await this.loginRegistroService.login(this.loginDto).toPromise();
+      this.sesionService.iniciarSesion(response.token, response.rol);
+      this.autenticado = true;
+      this.nombre = this.loginDto.nombre;
+      localStorage.setItem('nombreUsuario', this.nombre);
+      window.location.reload();
+    } catch (error) {
+      this.loginErrorMessage = 'Usuario o contraseña incorrecta';
+      console.log('Error al iniciar sesión.');
+      console.error(error);
+    }
   }
+
   cerrarSesion(): void {
     this.sesionService.cerrarSesion();
     this.autenticado = false;
     this.nombre = '';
-    window.location.reload()
+    window.location.reload();
   }
 
   cambiarIdioma(idioma: string): void {
     this.translate.use(idioma);
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

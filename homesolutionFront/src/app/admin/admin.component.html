@@ -1,5 +1,7 @@
 <!-- admin.component.html -->
     <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+    <br>
+    <br><br>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -38,3 +40,85 @@
     </div>
   </div>
 </div>
+<br><br><br>
+<!-- admin.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="fade-in">
+        <h2>Nuevo Servicio</h2>
+        <form (submit)="crearServicio()">
+          Descripción: <input type="text" name="descripcionServicio" [(ngModel)]="nuevoServicio.descripcionServicio" required><br>
+          Precio: <input type="number" name="precio" [(ngModel)]="nuevoServicio.precio" required><br>
+          Duración: <input type="number" name="duracion" [(ngModel)]="nuevoServicio.duracion" required><br>
+          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevoServicio.categoriaServicio" required><br>
+          <button type="submit">Crear Servicio</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fade-in">
+        <h2>Eliminar Servicio</h2>
+        <form (submit)="eliminarServicio()">
+          ID del Servicio a Eliminar: <input type="number" name="idServicio" [(ngModel)]="idServicioEliminar" required><br>
+          <button type="submit">Eliminar Servicio</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="fade-in">
+        <h2>Editar Servicio</h2>
+        <form (submit)="editarServicio()">
+          ID del Servicio a Editar: <input type="number" name="idServicio" [(ngModel)]="idServicioEditar" required><br>
+          Descripción: <input type="text" name="descripcionServicio" [(ngModel)]="servicioEditado.descripcionServicio"><br>
+          Precio: <input type="number" name="precio" [(ngModel)]="servicioEditado.precio"><br>
+          Duración: <input type="number" name="duracion" [(ngModel)]="servicioEditado.duracion"><br>
+          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="servicioEditado.categoriaServicio"><br>
+          <button type="submit">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- admin.component.html -->
+<br><br>
+<div>
+  <h2>Eliminar Usuario</h2>
+  <form (ngSubmit)="eliminarUsuario()">
+    <div class="form-group">
+      <label for="idUsuario">ID del Usuario a Eliminar:</label>
+      <input type="number" class="form-control" id="idUsuario" [(ngModel)]="idUsuarioEliminar" name="idUsuario" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+  </form>
+</div>
+
+<!-- admin.component.html -->
+<h2>Editar Usuario</h2>
+
+<form (ngSubmit)="editarUsuario()">
+  <label>ID de Usuario:</label>
+  <input type="number" [(ngModel)]="idUsuarioEditar" name="idUsuarioEditar">
+  <br>
+  <label>Nombre de Usuario:</label>
+  <input type="text" [(ngModel)]="usuarioEditado.nombreUsuario" name="nombreUsuario">
+  <br>
+  <label>Correo Electrónico:</label>
+  <input type="email" [(ngModel)]="usuarioEditado.correoElectronico" name="correoElectronico">
+  <br>
+  <label>Contraseña:</label>
+  <input type="password" [(ngModel)]="usuarioEditado.password" name="password">
+  <br>
+  <label>Rol:</label>
+  <input type="text" [(ngModel)]="usuarioEditado.rol" name="rol">
+  <br>
+  <label>Teléfono:</label>
+  <input type="text" [(ngModel)]="usuarioEditado.telefono" name="telefono">
+  <br>
+  <label>Dirección:</label>
+  <input type="text" [(ngModel)]="usuarioEditado.direccion" name="direccion">
+  <br>
+  <button type="submit">Editar Usuario</button>
+</form>
