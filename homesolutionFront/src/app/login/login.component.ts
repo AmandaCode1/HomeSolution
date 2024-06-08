@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   };
   autenticado: boolean = false;
 
-  constructor(
+  constructor(    
     private loginRegistroService: LoginRegistroService,
     private sesionService: SesionService,
     private translate: TranslateService,
@@ -92,27 +92,27 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  login(): void {
+  login():void {
     this.ConectarSesion = 'Sesión iniciada correctamente';
     
-    this.loginRegistroService.login(this.loginDto).subscribe(
-      response => {
-        this.sesionService.iniciarSesion(response.token, response.rol);
-        this.autenticado = true;
-        this.nombre = this.loginDto.nombre;
-        localStorage.setItem('nombreUsuario', this.nombre);
-     
-     
-       
-      },
-      error => {
-        this.loginErrorMessage = 'Usuario o contraseña incorrecta';
-        console.log('Error al iniciar sesión.');
-        console.error(error);
-      }
-    );
+    setTimeout(() => { 
+      this.loginRegistroService.login(this.loginDto).subscribe(
+        response => {
+          this.sesionService.iniciarSesion(response.token, response.rol);
+          this.autenticado = true;
+          this.nombre = this.loginDto.nombre;
+          localStorage.setItem('nombreUsuario', this.nombre);
+          window.location.reload()
+        },
+        error => {
+          this.loginErrorMessage = 'Usuario o contraseña incorrecta';
+          console.log('Error al iniciar sesión.');
+          console.error(error);
+        }
+      );
+    }, 2000); 
+   
   }
-
   cerrarSesion(): void {
     this.sesionService.cerrarSesion();
     this.autenticado = false;

@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     servicioId: 0,
   };
 
-  ofertaId: number = 0; 
+  ofertaId: number = 0;   
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void { }
