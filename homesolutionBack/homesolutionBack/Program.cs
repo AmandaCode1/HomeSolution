@@ -1,11 +1,13 @@
-using Pomelo.EntityFrameworkCore;
+//using Pomelo.EntityFrameworkCore;
 using homesolutionBack.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using System;
+//using Microsoft.Extensions.Options;
+//using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+//using System;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Swashbuckle.AspNetCore.Filters;
 namespace homesolutionBack
 {
     public class Program
@@ -16,17 +18,30 @@ namespace homesolutionBack
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
                 //incluyo serializacion para el ciclo de referencia circular al buscar la oferta de un usuario
-              /*  .AddJsonOptions(options =>
+                .AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-                options.JsonSerializerOptions.MaxDepth = 64; // Aumenta la profundidad si es necesario
-            });*/
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                //options.JsonSerializerOptions.MaxDepth = 64;
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen();/*(options =>
+            {
+                options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    BearerFormat = "JWT",
+                    Name = "Authorization",
+                    Description = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRhMTdjODU3LTBkMmQtNGM0MS05ZmQyLTdkOWUxODRmMWE3NCIsImlkVXN1YXJpbyI6MSwicm9sIjoiQWRtaW4iLCJuYmYiOjE3MTc4NjQwMTgsImV4cCI6NDQ5MTc4NjQwMTgsImlhdCI6MTcxNzg2NDAxOH0.lJgcKiwzfEggSi6nj7JrohTDmCcJsXvDJPPc36HiEN4",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                    Scheme = JwtBearerDefaults.AuthenticationScheme
+                });
+
+                options.OperationFilter<SecurityRequirementsOperationFilter>(true, JwtBearerDefaults.AuthenticationScheme);
+            });*/
 
             //Para configurar nuestro contexto con nuestra cadena de conexion para utlizarla en los controladores
             builder.Services.AddDbContext<FreedbHomesolutiondbContext>(opt => 
@@ -78,8 +93,6 @@ namespace homesolutionBack
             }
 
             app.UseHttpsRedirection();
-
-            app.UseAuthorization();
 
             //Habilita autenticacion y autorizacion
             app.UseAuthentication();

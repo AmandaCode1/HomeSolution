@@ -1,12 +1,13 @@
 ﻿using homesolutionBack.Models;
 using homesolutionBack.Models.Dto;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace homesolutionBack.Controllers
 {
@@ -47,8 +48,9 @@ namespace homesolutionBack.Controllers
                     Claims = new Dictionary<string, object>
                 {
                     { "id", Guid.NewGuid().ToString() },
-                    { "idUsuario", usuario.UsuarioId },
-                    { "rol", usuario.Rol }
+                    //{ "idUsuario", usuario.UsuarioId },
+                    //{ "rol", usuario.Rol },
+                    { ClaimTypes.Role, "Admin" }
                 },
                     //Expiracion token
                     Expires = DateTime.UtcNow.AddDays(500000),

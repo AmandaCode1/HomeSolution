@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
 using homesolutionBack.Models;
 using homesolutionBack.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 
 namespace homesolutionBack.Controllers
 {
@@ -70,6 +71,7 @@ namespace homesolutionBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("CrearServicio")]
         public async Task<IActionResult> CrearServicio([FromBody] CrearServicioDto crearServicioDto)
         {
@@ -100,8 +102,8 @@ namespace homesolutionBack.Controllers
             }
             
         }
-    
 
+        [Authorize]
         [HttpPut("AdminEditarServicio/{idServicio}")]
         public async Task<IActionResult> AdminEditarServicio(int idServicio, [FromBody] AdminEditarServicioDto adminEditarServicioDto)
         {
@@ -145,6 +147,7 @@ namespace homesolutionBack.Controllers
 
         }
 
+        [Authorize]
         [HttpDelete("BorrarServicio/{idServicio}")]
         public async Task<IActionResult> BorrarServicio(int idServicio)
         {

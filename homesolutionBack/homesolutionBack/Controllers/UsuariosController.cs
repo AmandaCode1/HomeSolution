@@ -1,6 +1,7 @@
 ﻿using homesolutionBack.Models;
 using homesolutionBack.Models.Dto;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ namespace homesolutionBack.Controllers
             _dbcontext = _context;
         }
 
+        [Authorize]
         [HttpGet("VerLista")]
         public async Task <IActionResult> Usuarios()
         {
@@ -46,6 +48,7 @@ namespace homesolutionBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("VerUsuario/{idUsuario}")]
         public async Task<IActionResult> VerUsuario(int idUsuario)
         {
@@ -77,6 +80,7 @@ namespace homesolutionBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("AdminEditarUsuario/{idUsuario}")]
         public async Task<IActionResult> AdminEditarUsuario(int idUsuario, [FromBody] AdminEditarUsuarioDto adminEditarUsuarioDto)
         {
@@ -124,6 +128,7 @@ namespace homesolutionBack.Controllers
             
         }
 
+        [Authorize]
         [HttpDelete("BorrarUsuario/{idUsuario}")]
         public async Task<IActionResult> BorrarUsuario(int idUsuario)
         {

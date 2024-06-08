@@ -1,5 +1,6 @@
 ﻿using homesolutionBack.Models;
 using homesolutionBack.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,6 +66,7 @@ namespace homesolutionBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("CrearOferta")]
         public async Task<IActionResult> CrearOferta([FromBody] CrearOfertaDto crearOfertaDto)
         {
@@ -96,6 +98,7 @@ namespace homesolutionBack.Controllers
 
         }
 
+        [Authorize]
         [HttpPut("AdminEditarOferta/{idOferta}")]
         public async Task<IActionResult> AdminEditarOferta(int idOferta, [FromBody] AdminEditarOfertaDto adminEditarOfertaDto)
         {
@@ -136,6 +139,7 @@ namespace homesolutionBack.Controllers
 
         }
 
+        [Authorize]
         [HttpDelete("BorrarOferta/{idOferta}")]
         public async Task<IActionResult> BorrarOferta(int idOferta)
         {
