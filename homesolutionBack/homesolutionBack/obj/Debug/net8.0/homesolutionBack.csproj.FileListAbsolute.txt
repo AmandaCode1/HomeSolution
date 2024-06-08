@@ -278,3 +278,6 @@ C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\
 C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\obj\Debug\net8.0\ref\homesolutionBack.dll
 C:\Users\Benito\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Scrutor.dll
+C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\AMANDA\Documents\GitHub\HomeSolution\homesolutionBack\homesolutionBack\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

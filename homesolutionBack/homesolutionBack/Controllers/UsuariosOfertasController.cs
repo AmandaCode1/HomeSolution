@@ -1,5 +1,7 @@
 ﻿using homesolutionBack.Models;
-using homesolutionBack.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
+
+//using homesolutionBack.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,7 @@ namespace homesolutionBack.Controllers
             _dbcontext = _context;
         }
 
+        [Authorize]
         [HttpGet("VerLista")]
         public async Task<IActionResult> UsuarioOfertas()
         {
@@ -37,6 +40,7 @@ namespace homesolutionBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("EnlazarOfertaUsuario")]
         public async Task<IActionResult> EnlazarOfertaUsuario(int usuarioId, int ofertaId)
         {
@@ -70,6 +74,7 @@ namespace homesolutionBack.Controllers
 
         }
 
+        [Authorize]
         [HttpDelete("BorrarOfertaUsuario")]
         public async Task<IActionResult> BorrarOfertaUsuario(int usuarioId, int ofertaId)
         {
