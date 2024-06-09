@@ -81,6 +81,37 @@ namespace homesolutionBack.Controllers
         }
 
         [Authorize]
+        [HttpPost("CrearUsuario")]
+        public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDto crearUsuarioDto)
+        {
+            try
+            {
+                var hashedPassword = PasswordHash.Hash(crearUsuarioDto.Password);
+
+                var usuario = new Usuario
+                {
+                    NombreUsuario = crearUsuarioDto.NombreUsuario,
+                    CorreoElectronico = crearUsuarioDto.CorreoElectronico,
+                    Password = hashedPassword,
+                    Rol = crearUsuarioDto.Rol,
+                    Telefono = crearUsuarioDto.Telefono,
+                    Direccion = crearUsuarioDto.Direccion
+                };
+
+                _dbcontext.Usuarios.Add(usuario);
+                await _dbcontext.SaveChangesAsync();
+
+                return StatusCode(StatusCodes.Status201Created, usuario);
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al crear el usuario: {e.Message}");
+            }
+
+        }
+
+        [Authorize]
         [HttpPut("AdminEditarUsuario/{idUsuario}")]
         public async Task<IActionResult> AdminEditarUsuario(int idUsuario, [FromBody] AdminEditarUsuarioDto adminEditarUsuarioDto)
         {
