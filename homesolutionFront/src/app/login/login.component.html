@@ -17,9 +17,8 @@
               <label>{{ 'Contraseña' | translate }}</label>
               <input type="password" [(ngModel)]="loginDto.password" name="password" required>
             </div>
-            <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
 
-            <div *ngIf="ConectarSesion2" class="welcome-message">{{ ConectarSesion }}</div>
+            <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
             <div *ngIf="loginErrorMessage" class="error-message">{{ loginErrorMessage }}</div>
             <button type="submit" class="submit-btn">{{ 'Iniciar Sesión' | translate }}</button>
           </form>
@@ -45,19 +44,18 @@
             </div>
             <div *ngIf="registroDto.password !== registroDto.repeatPassword && registroDto.repeatPassword !== ''"
               class="error-message">{{ 'Las contraseñas no coinciden' | translate }}</div>
-              <div class="form-group">
-                <label>{{ 'Teléfono' | translate }}</label>
-                <input type="text" [(ngModel)]="registroDto.telefono" name="telefono" required maxlength="9">
-              </div>
-              
+            <div class="form-group">
+              <label>{{ 'Teléfono' | translate }}</label>
+              <input type="text" [(ngModel)]="registroDto.telefono" name="telefono" required maxlength="9">
+            </div>
             <div class="form-group">
               <label>{{ 'Dirección' | translate }}</label>
               <input type="text" [(ngModel)]="registroDto.direccion" name="direccion" required>
             </div>
-            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> 
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
             <button type="submit" class="submit-btn">{{ 'Registrar' | translate }}</button>
+            <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
           </form>
-          <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
         </ng-template>
 
         <div class="auth-toggle">
@@ -70,7 +68,7 @@
 
     <div class="auth-container">
       <div *ngIf="autenticado">
-        <div class="welcome-message">{{ ('Bienvenido'| translate)+ ','+ nombre }}</div>
+        <div class="welcome-message">{{ ('Bienvenido' | translate) + ', ' + nombre }}</div>
         <button (click)="cerrarSesion()" class="logout-btn">{{ 'Cerrar Sesión' | translate }}</button>
       </div>
     </div>
