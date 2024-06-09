@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace homesolutionBack.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UsuariosOfertasController : Controller
     {
         //declaramos objeto de nuestra base de batos para crud
@@ -37,6 +39,35 @@ namespace homesolutionBack.Controllers
             catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Error al obtener la lista de ofertas de usuarios: {e.Message}");
+            }
+        }
+
+        
+        [HttpGet("VerOfertasdeUsuario/{idUsuario}")]
+        public async Task<IActionResult> VerOfertasdeUsuario(int idUsuario)
+        {
+            try
+            {
+                var oferta = await _dbcontext.UsuariosOfertas
+                .Where(uo => uo.UsuarioId == idUsuario)
+                .Include(uo => uo.Oferta)
+                .Select(uo => new
+                {
+                    uo.OfertaId,
+                    uo.Oferta.DescripcionOferta
+                })
+                .ToListAsync();
+
+                if (oferta == null)
+                {
+                    return NotFound($"El usuario con ID {idUsuario} no tiene ningun oferta asignada");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, oferta);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al obtener la oferta del usuario: {e.Message}");
             }
         }
 
