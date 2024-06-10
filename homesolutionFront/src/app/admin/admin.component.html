@@ -6,8 +6,23 @@
   <div class="row">
     <div class="col">
       <div class="fade-in">
+
+        <div>
+          <label for="idOferta">ID de la oferta:</label>
+          <input type="number" id="idOferta" [(ngModel)]="ofertaId">
+          <button (click)="verOferta()">Ver Oferta</button>
+        </div>
+        
+        <div *ngIf="oferta">
+          <h2>Detalles de la oferta</h2>
+          <p>Descripción: {{ oferta.descripcionOferta }}</p>
+          <p>Categoría: {{ oferta.categoriaServicio }}</p>
+          <p>ID del Servicio: {{ oferta.servicioId }}</p>
+        </div>
+        
         <h2>Nueva Oferta</h2>
-        <form (submit)="crearOferta()">
+        <form (submit)="crearOferta(nuevaOferta)">
+
           Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta" required><br>
           Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio" required><br>
           Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId" required><br>
@@ -16,109 +31,238 @@
       </div>
     </div>
 
-    <div class="col">
-      <div class="fade-in">
-        <h2>Eliminar Oferta</h2>
-        <form (submit)="eliminarOferta(ofertaId)">
-          ID de la Oferta a Eliminar: <input type="number" name="ofertaId" [(ngModel)]="ofertaId" required><br>
-          <button type="submit">Eliminar Oferta</button>
-        </form>
+    <div>
+      <h2>Editar Oferta</h2>
+      <div>
+        <label for="ofertaId">ID de la oferta:</label>
+        <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId">
+        <button (click)="verOferta()">Buscar Oferta</button>
       </div>
+      <form *ngIf="oferta" (ngSubmit)="editarOferta()">
+        <div>
+          <label for="descripcion">Descripción de la oferta:</label>
+          <input type="text" id="descripcion" [(ngModel)]="oferta.descripcionOferta" name="descripcion">
+        </div>
+        <div>
+          <label for="categoria">Categoría del servicio:</label>
+          <input type="text" id="categoria" [(ngModel)]="oferta.categoriaServicio" name="categoria">
+        </div>
+        <div>
+          <label for="servicio">ID del servicio:</label>
+          <input type="number" id="servicio" [(ngModel)]="oferta.servicioId" name="servicio">
+        </div>
+        <button type="submit">Guardar cambios</button>
+      </form>
     </div>
 
-    <div class="col">
-      <div class="fade-in">
-        <h2>Editar Oferta</h2>
-        <form (submit)="guardarCambios()">
-          ID de la Oferta a Editar: <input type="number" name="ofertaId" [(ngModel)]="ofertaId" required><br>
-          Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="ofertaEditada.descripcionOferta"><br>
-          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="ofertaEditada.categoriaServicio"><br>
-          Servicio ID: <input type="number" name="servicioId" [(ngModel)]="ofertaEditada.servicioId"><br>
-          <button type="submit">Guardar Cambios</button>
-        </form>
-      </div>
-    </div>
+    <div>
+  <h2>Eliminar Oferta</h2>
+  <div>
+    <label for="ofertaId">ID de la oferta:</label>
+    <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId">
+    <button (click)="borrarOferta()">Eliminar Oferta</button>
   </div>
 </div>
+
 <br><br><br>
-<!-- admin.component.html -->
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="fade-in">
-        <h2>Nuevo Servicio</h2>
-        <form (submit)="crearServicio()">
-          Descripción: <input type="text" name="descripcionServicio" [(ngModel)]="nuevoServicio.descripcionServicio" required><br>
-          Precio: <input type="number" name="precio" [(ngModel)]="nuevoServicio.precio" required><br>
-          Duración: <input type="number" name="duracion" [(ngModel)]="nuevoServicio.duracion" required><br>
-          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevoServicio.categoriaServicio" required><br>
-          <button type="submit">Crear Servicio</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="fade-in">
-        <h2>Eliminar Servicio</h2>
-        <form (submit)="eliminarServicio()">
-          ID del Servicio a Eliminar: <input type="number" name="idServicio" [(ngModel)]="idServicioEliminar" required><br>
-          <button type="submit">Eliminar Servicio</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="fade-in">
-        <h2>Editar Servicio</h2>
-        <form (submit)="editarServicio()">
-          ID del Servicio a Editar: <input type="number" name="idServicio" [(ngModel)]="idServicioEditar" required><br>
-          Descripción: <input type="text" name="descripcionServicio" [(ngModel)]="servicioEditado.descripcionServicio"><br>
-          Precio: <input type="number" name="precio" [(ngModel)]="servicioEditado.precio"><br>
-          Duración: <input type="number" name="duracion" [(ngModel)]="servicioEditado.duracion"><br>
-          Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="servicioEditado.categoriaServicio"><br>
-          <button type="submit">Guardar Cambios</button>
-        </form>
-      </div>
-    </div>
+<div>
+  <h2>Ver Servicio</h2>
+  <div>
+    <label for="servicioId">ID del Servicio:</label>
+    <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
+    <button (click)="verServicio()">Ver Servicio</button>
+  </div>
+  <div *ngIf="servicio">
+    <h3>Detalles del Servicio</h3>
+    <p>ID: {{ servicio.servicioId }}</p>
+    <p>Descripción: {{ servicio.descripcionServicio }}</p>
+    <p>Precio: {{ servicio.precio }}</p>
+    <p>Duración: {{ servicio.duracion }}</p>
+    <p>Categoría: {{ servicio.categoriaServicio }}</p>
+    <!-- Agrega aquí otros detalles del servicio que desees mostrar -->
   </div>
 </div>
-<!-- admin.component.html -->
-<br><br>
 <div>
-  <h2>Eliminar Usuario</h2>
-  <form (ngSubmit)="eliminarUsuario()">
-    <div class="form-group">
-      <label for="idUsuario">ID del Usuario a Eliminar:</label>
-      <input type="number" class="form-control" id="idUsuario" [(ngModel)]="idUsuarioEliminar" name="idUsuario" required>
+  <h2>Crear Servicio</h2>
+  <form (ngSubmit)="crearServicio()">
+    <div>
+      <label for="descripcionServicio">Descripción del Servicio:</label>
+      <input type="text" id="descripcionServicio" [(ngModel)]="nuevoServicio.descripcionServicio" name="descripcionServicio">
     </div>
-    <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+    <div>
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" [(ngModel)]="nuevoServicio.precio" name="precio">
+    </div>
+    <div>
+      <label for="duracion">Duración:</label>
+      <input type="number" id="duracion" [(ngModel)]="nuevoServicio.duracion" name="duracion">
+    </div>
+    <div>
+      <label for="categoriaServicio">Categoría del Servicio:</label>
+      <input type="text" id="categoriaServicio" [(ngModel)]="nuevoServicio.categoriaServicio" name="categoriaServicio">
+    </div>
+    <button type="submit">Crear Servicio</button>
   </form>
 </div>
 
-<!-- admin.component.html -->
-<h2>Editar Usuario</h2>
 
-<form (ngSubmit)="editarUsuario()">
-  <label>ID de Usuario:</label>
-  <input type="number" [(ngModel)]="idUsuarioEditar" name="idUsuarioEditar">
-  <br>
-  <label>Nombre de Usuario:</label>
-  <input type="text" [(ngModel)]="usuarioEditado.nombreUsuario" name="nombreUsuario">
-  <br>
-  <label>Correo Electrónico:</label>
-  <input type="email" [(ngModel)]="usuarioEditado.correoElectronico" name="correoElectronico">
-  <br>
-  <label>Contraseña:</label>
-  <input type="password" [(ngModel)]="usuarioEditado.password" name="password">
-  <br>
-  <label>Rol:</label>
-  <input type="text" [(ngModel)]="usuarioEditado.rol" name="rol">
-  <br>
-  <label>Teléfono:</label>
-  <input type="text" [(ngModel)]="usuarioEditado.telefono" name="telefono">
-  <br>
-  <label>Dirección:</label>
-  <input type="text" [(ngModel)]="usuarioEditado.direccion" name="direccion">
-  <br>
-  <button type="submit">Editar Usuario</button>
-</form>
+<div>
+  <h2>Editar Servicio</h2>
+  <div>
+    <label for="servicioId">ID del Servicio:</label>
+    <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
+  </div>
+  <div>
+    <label for="descripcionServicio">Nueva descripción del Servicio:</label>
+    <input type="text" id="descripcionServicio" [(ngModel)]="editarServicioDto.descripcionServicio" name="descripcionServicio">
+  </div>
+  <div>
+    <label for="precio">Nuevo precio:</label>
+    <input type="number" id="precio" [(ngModel)]="editarServicioDto.precio" name="precio">
+  </div>
+  <div>
+    <label for="duracion">Nueva duración:</label>
+    <input type="number" id="duracion" [(ngModel)]="editarServicioDto.duracion" name="duracion">
+  </div>
+  <div>
+    <label for="categoriaServicio">Nueva categoría del Servicio:</label>
+    <input type="text" id="categoriaServicio" [(ngModel)]="editarServicioDto.categoriaServicio" name="categoriaServicio">
+  </div>
+  <button (click)="editarServicio()">Editar Servicio</button>
+</div>
+
+<div>
+  <h2>Eliminar Servicio</h2>
+  <div>
+    <label for="servicioId">ID del Servicio:</label>
+    <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
+    <button (click)="borrarServicio()">Eliminar Servicio</button>
+  </div>
+</div>
+
+<div>
+  <h2>Lista de Usuarios</h2>
+  <ul>
+    <li *ngFor="let usuario of listaUsuarios">
+      <p>ID: {{ usuario.usuarioId }}</p>
+      <p>Nombre: {{ usuario.nombreUsuario }}</p>
+      <p>Rol: {{ usuario.rol }}</p>
+      <p>Correo Electrónico: {{ usuario.correoElectronico }}</p>
+      <p>Dirección: {{ usuario.direccion }}</p>
+      <p>Teléfono: {{ usuario.telefono }}</p>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <h2>Crear Usuario</h2>
+  <div>
+    <label for="nombreUsuario">Nombre de Usuario:</label>
+    <input type="text" id="nombreUsuario" [(ngModel)]="crearUsuarioDto.nombreUsuario" name="nombreUsuario">
+  </div>
+  <div>
+    <label for="correoElectronico">Correo Electrónico:</label>
+    <input type="email" id="correoElectronico" [(ngModel)]="crearUsuarioDto.correoElectronico" name="correoElectronico">
+  </div>
+  <div>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" [(ngModel)]="crearUsuarioDto.password" name="password">
+  </div>
+  <div>
+    <label for="rol">Rol:</label>
+    <input type="text" id="rol" [(ngModel)]="crearUsuarioDto.rol" name="rol">
+  </div>
+  <div>
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" [(ngModel)]="crearUsuarioDto.telefono" name="telefono">
+  </div>
+  <div>
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" [(ngModel)]="crearUsuarioDto.direccion" name="direccion">
+  </div>
+  <button (click)="crearUsuario()">Crear Usuario</button>
+</div>
+
+<div>
+  <h2>Editar Usuario</h2>
+  <div>
+    <label for="idUsuario">ID del Usuario:</label>
+    <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario">
+  </div>
+  <div>
+    <label for="nombreUsuario">Nuevo Nombre de Usuario:</label>
+    <input type="text" id="nombreUsuario" [(ngModel)]="AdminEditarUsuarioDto.nombreUsuario" name="nombreUsuario">
+  </div>
+  <div>
+    <label for="password">Nueva password:</label>
+    <input type="text" id="password" [(ngModel)]="AdminEditarUsuarioDto.password" name="password">
+  </div>
+  <div>
+    <label for="rol">Nuevo Rol:</label>
+    <input type="text" id="rol" [(ngModel)]="AdminEditarUsuarioDto.rol" name="rol">
+  </div>
+  <div>
+    <label for="correoElectronico">Nuevo Correo Electrónico:</label>
+    <input type="email" id="correoElectronico" [(ngModel)]="AdminEditarUsuarioDto.correoElectronico" name="correoElectronico">
+  </div>
+  <div>
+    <label for="direccion">Nueva Dirección:</label>
+    <input type="text" id="direccion" [(ngModel)]="AdminEditarUsuarioDto.direccion" name="direccion">
+  </div>
+  <div>
+    <label for="telefono">Nuevo Teléfono:</label>
+    <input type="text" id="telefono" [(ngModel)]="AdminEditarUsuarioDto.telefono" name="telefono">
+  </div>
+  <button (click)="editarUsuario()">Editar Usuario</button>
+</div>
+
+<div>
+  <h2>Borrar Usuario</h2>
+  <div>
+    <label for="idUsuario">ID del Usuario:</label>
+    <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario">
+  </div>
+  <button (click)="borrarUsuario()">Borrar Usuario</button>
+</div>
+
+<div *ngIf="usuariosOfertas">
+  <h2>Usuarios Ofertas</h2>
+  <ul>
+    <li *ngFor="let usuarioOferta of usuariosOfertas">
+      <p>Usuario ID: {{ usuarioOferta.usuarioId }}</p>
+      <p>Oferta ID: {{ usuarioOferta.ofertaId }}</p>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <h1>Enlazar Oferta a Usuario</h1>
+  <form (ngSubmit)="enlazarOfertaUsuario()">
+    <div class="form-group">
+      <label for="usuarioId">ID del Usuario:</label>
+      <input type="number" id="usuarioId" [(ngModel)]="usuarioId" name="usuarioId" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="ofertaId">ID de la Oferta:</label>
+      <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enlazar</button>
+  </form>
+  <div *ngIf="mensaje" class="alert alert-info">{{ mensaje }}</div>
+</div>
+
+<div class="container">
+  <h1>Borrar Oferta de Usuario</h1>
+  <form (ngSubmit)="borrarOfertaUsuario()">
+    <div class="form-group">
+      <label for="usuarioId">ID del Usuario:</label>
+      <input type="number" id="usuarioId" [(ngModel)]="usuarioId" name="usuarioId" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="ofertaId">ID de la Oferta:</label>
+      <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Borrar</button>
+  </form>
+  <div *ngIf="mensaje" class="alert alert-info">{{ mensaje2 }}</div>
+</div>

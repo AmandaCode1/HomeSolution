@@ -1,4 +1,3 @@
-// usuarioDto.ts
 
 export interface UsuarioDto {
     nombre: string;
@@ -8,5 +7,3 @@ export interface UsuarioDto {
     telefono: string;
     direccion: string;
   }
-
-  

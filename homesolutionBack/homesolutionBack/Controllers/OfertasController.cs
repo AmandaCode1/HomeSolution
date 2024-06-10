@@ -98,44 +98,44 @@ namespace homesolutionBack.Controllers
 
         }
 
-        [Authorize]
-        [HttpPut("AdminEditarOferta/{idOferta}")]
-        public async Task<IActionResult> AdminEditarOferta(int idOferta, [FromBody] AdminEditarOfertaDto adminEditarOfertaDto)
-        {
-            try
+            [Authorize]
+            [HttpPut("AdminEditarOferta/{idOferta}")]
+            public async Task<IActionResult> AdminEditarOferta(int idOferta, [FromBody] AdminEditarOfertaDto adminEditarOfertaDto)
             {
-                var oferta = await _dbcontext.Ofertas.FindAsync(idOferta);
+                try
+                {
+                    var oferta = await _dbcontext.Ofertas.FindAsync(idOferta);
 
-                if (oferta == null)
-                {
-                    return NotFound($"Oferta con ID {idOferta} no encontrada");
+                    if (oferta == null)
+                    {
+                        return NotFound($"Oferta con ID {idOferta} no encontrada");
 
-                }
+                    }
 
-                //actualizar bd con los valores del dto, si estan vacios se deja el valor anterior
-                if (!string.IsNullOrEmpty(adminEditarOfertaDto.DescripcionOferta))
-                {
-                    oferta.DescripcionOferta = adminEditarOfertaDto.DescripcionOferta;
-                }
-                if (!string.IsNullOrEmpty(adminEditarOfertaDto.CategoriaServicio))
-                {
-                    oferta.CategoriaServicio = adminEditarOfertaDto.CategoriaServicio;
-                }
-                if (adminEditarOfertaDto.ServicioId.HasValue)
-                {
-                    oferta.ServicioId = adminEditarOfertaDto.ServicioId.Value;
-                }
+                    //actualizar bd con los valores del dto, si estan vacios se deja el valor anterior
+                    if (!string.IsNullOrEmpty(adminEditarOfertaDto.DescripcionOferta))
+                    {
+                        oferta.DescripcionOferta = adminEditarOfertaDto.DescripcionOferta;
+                    }
+                    if (!string.IsNullOrEmpty(adminEditarOfertaDto.CategoriaServicio))
+                    {
+                        oferta.CategoriaServicio = adminEditarOfertaDto.CategoriaServicio;
+                    }
+                    if (adminEditarOfertaDto.ServicioId.HasValue)
+                    {
+                        oferta.ServicioId = adminEditarOfertaDto.ServicioId.Value;
+                    }
                 
 
-                await _dbcontext.SaveChangesAsync();
-
+                    await _dbcontext.SaveChangesAsync();
+              
                 return StatusCode(StatusCodes.Status200OK, $"Oferta con ID {idOferta} editada correctamente");
 
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Error al editar la oferta: {e.Message}");
-            }
+                }
+                catch (Exception e)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Error al editar la oferta: {e.Message}");
+                }
 
         }
 

@@ -6,7 +6,14 @@ export interface OfertaDto {
 }
 
 export interface AdminEditarOfertaDto {
+
   descripcionOferta: string;
   categoriaServicio: string;
   servicioId: number;
+}
+
+
+export interface EnlazarOfertaUsuarioDto {
+  usuarioId: number;
+  ofertaId: number;
 }
