@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   nombre: string = '';
   errorMessage: string = '';
   loginErrorMessage: string = '';
+  correoElectronico: string = '';
   registroDto = {
     nombre: '',
     correoElectronico: '',
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.autenticado = this.sesionService.estaAutenticado();
     this.nombre = localStorage.getItem('nombreUsuario') || '';
+  
   }
 
   alternarFormulario(): void {

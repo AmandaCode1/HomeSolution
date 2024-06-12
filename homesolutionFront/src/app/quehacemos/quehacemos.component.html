@@ -1,17 +1,26 @@
-<div><img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+<div>
+  <img src="assets/img/fondo.jpg" alt="Imagen de cabecera" class="header-img">
 
   <div class="container">
-
+    <br><br><br>
     <h1>Qué Hacemos</h1>
-    <div *ngIf="data.length > 0; else noData">
-
+    <div *ngIf="data.length > 0; else noData" class="grid-container">
       <div *ngFor="let item of data" class="data-block">
         <div class="data-content">
-          <h2>{{ item.nombre }}</h2>
-          <p><strong>Descripción:</strong> {{ item.descripcionServicio }}</p>
-          <p><strong>Precio:</strong> {{ item.precio }}€</p>
-          <p><strong>Duración Estimada:</strong> {{ item.duracion }} Horas</p>
-          <p><strong>Categoría:</strong> {{ item.categoriaServicio }}</p>
+          <div class="item-wrapper">
+            <div class="content-wrapper">
+              <p class="categoria">{{ item.categoriaServicio }}</p>
+              <h2>{{ item.nombre }}</h2>
+              <p>{{ item.descripcionServicio }}</p>
+              <p class="precio">{{ item.precio }}€</p>
+              <p>{{ item.duracion }} Horas</p>
+            </div>
+            <img *ngIf="item.categoriaServicio === 'Fontaneria'" src="assets/img/fontaneria.jpg" alt="Fontanería" class="diseño-img" routerLink="/fontaneria">
+            <img *ngIf="item.categoriaServicio === 'Climatización'" src="assets/img/aire.png" alt="Climatizacion" class="diseño-img"routerLink="/climatizacion">
+            <img *ngIf="item.categoriaServicio === 'Pladur'" src="assets/img/pladu.jpg" alt="Pladur" class="diseño-img" routerLink="/pladur">
+            <img *ngIf="item.categoriaServicio === 'Electricidad'" src="assets/img/electricista.jpg" alt="Electricidad" class="diseño-img" routerLink="/electricidad">
+          </div>
+          
         </div>
       </div>
     </div>

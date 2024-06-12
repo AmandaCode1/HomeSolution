@@ -8,7 +8,7 @@
 }
 
 .container {
-  margin-top: 100px; /* Ajuste para la imagen de encabezado */
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -29,7 +29,7 @@ h1 {
 }
 
 .data-block:hover {
-  background-color: #86abd3; /* Color azul */
+  background-color: #86abd3; 
   animation: bounceRotate 1s infinite;
 }
 
@@ -54,5 +54,6 @@ h1 {
 }
 
 .data-content strong {
-  color: #ffffff; /* Cambiar a blanco para mejor contraste en azul */
+  color: #ffffff;
 }
+/*********************************responsivee***********************************/

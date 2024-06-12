@@ -17,6 +17,11 @@ import { LoginComponent } from './login/login.component';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { PreloadComponent } from './preload/preload.component';
 import { AdminComponent } from './admin/admin.component';
+import { FooterComponent } from './footer/footer.component';
+import { ElectricidadComponent } from './electricidad/electricidad.component';
+import { ClimatizacionComponent } from './climatizacion/climatizacion.component';
+import { PladurComponent } from './pladur/pladur.component';
+import { FontaneriaComponent } from './fontaneria/fontaneria.component';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     OfertasComponent,
     PreloadComponent,
-    AdminComponent
+    AdminComponent,
+    FooterComponent,
+    ElectricidadComponent,
+    ClimatizacionComponent,
+    PladurComponent,
+    FontaneriaComponent
   ],
   imports: [
     BrowserModule,

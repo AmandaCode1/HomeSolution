@@ -84,6 +84,10 @@ usuarioId: any;
     this.obtenerUsuariosOfertas();
   }
   crearOferta(crearOfertaDto: any): void {
+    if (!crearOfertaDto.descripcionOferta || !crearOfertaDto.categoriaServicio || !crearOfertaDto.servicioId) {
+      alert('Todos los campos de la nueva oferta deben estar rellenados');
+      return;
+    }
     this.adminService.crearOferta(crearOfertaDto).subscribe(
       (data) => {
 
@@ -96,6 +100,10 @@ usuarioId: any;
     );
   }
   verOferta() {
+    if (!this.ofertaId) {
+      alert('El ID de la oferta debe estar relleno');
+      return;
+    }
     this.adminService.verOferta(this.ofertaId).subscribe(
       (data) => {
         this.oferta = data;
@@ -106,6 +114,10 @@ usuarioId: any;
     );
   }
   editarOferta() {
+    if (!this.ofertaId || !this.oferta.descripcionOferta || !this.oferta.categoriaServicio || !this.oferta.servicioId) {
+      alert('Todos los campos de la oferta deben estar rellenados para editar');
+      return;
+    }
     this.adminService.editarOferta(this.ofertaId, this.oferta).subscribe(
       (data) => {
         console.log('Oferta editada correctamente:', data);
@@ -122,6 +134,10 @@ usuarioId: any;
 
   }
   borrarOferta(): void {
+    if (!this.ofertaId) {
+      alert('El ID de la oferta debe estar relleno para eliminar');
+      return;
+    }
     this.adminService.borrarOferta(this.ofertaId).subscribe(
       (data) => {
         console.log('Oferta eliminada correctamente:', data);
@@ -138,6 +154,10 @@ usuarioId: any;
   }
 
   verServicio(): void {
+    if (!this.servicioId) {
+      alert('El ID del servicio debe estar relleno');
+      return;
+    }
     this.adminService.verServicio(this.servicioId).subscribe(
       (data) => {
         this.servicio = data;
@@ -149,6 +169,11 @@ usuarioId: any;
     );
   }
   crearServicio(): void {
+
+    if (!this.nuevoServicio.descripcionServicio || !this.nuevoServicio.precio || !this.nuevoServicio.duracion || !this.nuevoServicio.categoriaServicio) {
+      alert('Todos los campos del nuevo servicio deben estar rellenados');
+      return;
+    }
     this.adminService.crearServicio(this.nuevoServicio).subscribe(
       (data) => {
         console.log('Servicio creado correctamente:', data);
@@ -161,6 +186,11 @@ usuarioId: any;
     );
   }
   editarServicio(): void {
+
+    if (!this.servicioId || !this.editarServicioDto.descripcionServicio || !this.editarServicioDto.precio || !this.editarServicioDto.duracion || !this.editarServicioDto.categoriaServicio) {
+      alert('Todos los campos del servicio deben estar rellenados para editar');
+      return;
+    }
     this.adminService.editarServicio(this.servicioId, this.editarServicioDto).subscribe(
       (data) => {
         console.log('Servicio editado correctamente:', data);
@@ -176,6 +206,10 @@ usuarioId: any;
     );
   }
   borrarServicio(): void {
+    if (!this.servicioId) {
+      alert('El ID del servicio debe estar relleno para eliminar');
+      return;
+    }
     this.adminService.borrarServicio(this.servicioId).subscribe(
       (data) => {
         console.log('Servicio eliminado correctamente:', data);
@@ -191,6 +225,7 @@ usuarioId: any;
       }
     );
   }
+
   obtenerListaUsuarios(): void {
     this.adminService.obtenerListaUsuarios().subscribe(
       (data) => {
@@ -203,6 +238,10 @@ usuarioId: any;
     );
   }
   crearUsuario(): void {
+    if (!this.crearUsuarioDto.nombreUsuario || !this.crearUsuarioDto.correoElectronico || !this.crearUsuarioDto.password || !this.crearUsuarioDto.rol || !this.crearUsuarioDto.telefono || !this.crearUsuarioDto.direccion) {
+      alert('Todos los campos del nuevo usuario deben estar rellenados');
+      return;
+    }
     this.adminService.crearUsuario(this.crearUsuarioDto).subscribe(
       (data) => {
         console.log('Usuario creado correctamente:', data);
@@ -215,6 +254,10 @@ usuarioId: any;
     );
   }
   editarUsuario(): void {
+    if (!this.idUsuario || !this.AdminEditarUsuarioDto.nombreUsuario || !this.AdminEditarUsuarioDto.correoElectronico || !this.AdminEditarUsuarioDto.password || !this.AdminEditarUsuarioDto.rol || !this.AdminEditarUsuarioDto.telefono || !this.AdminEditarUsuarioDto.direccion) {
+      alert('Todos los campos del usuario deben estar rellenados para editar');
+      return;
+    }
     this.adminService.editarUsuario(this.idUsuario, this.AdminEditarUsuarioDto).subscribe(
       (data) => {
         console.log('Usuario editado correctamente:', data);
@@ -227,6 +270,10 @@ usuarioId: any;
     );
   }
   borrarUsuario(): void {
+    if (!this.idUsuario) {
+      alert('El ID del usuario debe estar relleno para eliminar');
+      return;
+    }
     this.adminService.borrarUsuario(this.idUsuario).subscribe(
       (data) => {
         console.log('Usuario eliminado correctamente:', data);
@@ -254,6 +301,10 @@ usuarioId: any;
   }
   
 enlazarOfertaUsuario(): void {
+  if (!this.usuarioId || !this.ofertaId) {
+    alert('ID del Usuario y ID de la Oferta deben estar rellenados');
+    return;
+  }
   this.adminService.enlazarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
     response => {
       this.mensaje2 = 'Oferta enlazada exitosamente';
@@ -265,6 +316,10 @@ enlazarOfertaUsuario(): void {
   );
 }
 borrarOfertaUsuario(): void {
+  if (!this.usuarioId || !this.ofertaId) {
+    alert('ID del Usuario y ID de la Oferta deben estar rellenados');
+    return;
+  }
   this.adminService.borrarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
     response => {
       this.mensaje = response.message;

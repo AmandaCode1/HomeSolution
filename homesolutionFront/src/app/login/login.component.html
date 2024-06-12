@@ -1,66 +1,69 @@
-<body>
+
+<div>
+  <img src="assets/img/fondo.jpg" alt="Imagen de Encabezado" class="header-img">
+  <br><br>
   <div class="login-container">
-    <img src="assets/fondo.jpg" alt="Header Image" class="header-img">
+
     <div class="auth-container">
       <div *ngIf="!autenticado">
         <div class="logo-container">
-          <img src="assets/logo.jpeg" alt="Logo" class="logo">
+          <img src="assets/img/logo.jpeg" alt="Logo" class="logo">
         </div>
 
         <div *ngIf="iniciarSesion; else registroForm">
           <form (ngSubmit)="login()" class="form">
             <div class="form-group">
-              <label>{{ 'Nombre' | translate }}</label>
+              <label>{{ 'Nombre' }}</label>
               <input type="text" [(ngModel)]="loginDto.nombre" name="nombre" required>
             </div>
             <div class="form-group">
-              <label>{{ 'Contraseña' | translate }}</label>
+              <label>{{ 'Contraseña' }}</label>
               <input type="password" [(ngModel)]="loginDto.password" name="password" required>
             </div>
 
             <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
             <div *ngIf="loginErrorMessage" class="error-message">{{ loginErrorMessage }}</div>
-            <button type="submit" class="submit-btn">{{ 'Iniciar Sesión' | translate }}</button>
+            <button type="submit" class="submit-btn">{{ 'Iniciar Sesión' }}</button>
           </form>
         </div>
 
         <ng-template #registroForm>
           <form (ngSubmit)="registro()" class="form">
             <div class="form-group">
-              <label>{{ 'Nombre' | translate }}</label>
+              <label>{{ 'Nombre' }}</label>
               <input type="text" [(ngModel)]="registroDto.nombre" name="nombre" required>
             </div>
             <div class="form-group">
-              <label>{{ 'Correo Electrónico' | translate }}</label>
+              <label>{{ 'Correo Electrónico' }}</label>
               <input type="email" [(ngModel)]="registroDto.correoElectronico" name="correoElectronico" required>
             </div>
             <div class="form-group">
-              <label>{{ 'Contraseña' | translate }}</label>
+              <label>{{ 'Contraseña' }}</label>
               <input type="password" [(ngModel)]="registroDto.password" name="password" required>
             </div>
             <div class="form-group">
-              <label>{{ 'Repetir Contraseña' | translate }}</label>
+              <label>{{ 'Repetir Contraseña' }}</label>
               <input type="password" [(ngModel)]="registroDto.repeatPassword" name="repeatPassword" required>
             </div>
             <div *ngIf="registroDto.password !== registroDto.repeatPassword && registroDto.repeatPassword !== ''"
-              class="error-message">{{ 'Las contraseñas no coinciden' | translate }}</div>
+              class="error-message">{{ 'Las contraseñas no coinciden' }}</div>
             <div class="form-group">
-              <label>{{ 'Teléfono' | translate }}</label>
+              <label>{{ 'Teléfono' }}</label>
               <input type="text" [(ngModel)]="registroDto.telefono" name="telefono" required maxlength="9">
             </div>
             <div class="form-group">
-              <label>{{ 'Dirección' | translate }}</label>
+              <label>{{ 'Dirección' }}</label>
               <input type="text" [(ngModel)]="registroDto.direccion" name="direccion" required>
             </div>
             <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-            <button type="submit" class="submit-btn">{{ 'Registrar' | translate }}</button>
+            <button type="submit" class="submit-btn">{{ 'Registrar' }}</button>
             <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
           </form>
         </ng-template>
 
         <div class="auth-toggle">
           <button (click)="alternarFormulario()" class="toggle-btn">
-            {{ iniciarSesion ? ('No tienes cuenta? Regístrate' | translate) : ('Iniciar Sesión' | translate) }}
+            {{ iniciarSesion ? ('No tienes cuenta? Regístrate' ) : ('Iniciar Sesión' ) }}
           </button>
         </div>
       </div>
@@ -68,9 +71,9 @@
 
     <div class="auth-container">
       <div *ngIf="autenticado">
-        <div class="welcome-message">{{ ('Bienvenido' | translate) + ', ' + nombre }}</div>
-        <button (click)="cerrarSesion()" class="logout-btn">{{ 'Cerrar Sesión' | translate }}</button>
+        <div class="welcome-message">{{ ('Bienvenido' ) + ', ' + nombre }}</div>
+        <button (click)="cerrarSesion()" class="logout-btn">{{ 'Cerrar Sesión' }}</button>
       </div>
     </div>
   </div>
-</body>
+</div>

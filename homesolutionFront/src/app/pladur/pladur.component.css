@@ -1,0 +1,85 @@
+.header-img {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.6;
+    object-fit: cover; 
+  }
+.pladur-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+header {
+    text-align: center;
+    margin: 20px 0; 
+    background-color: #444; 
+    padding: 20px; 
+}
+
+header h1 {
+    font-size: 3em; 
+    font-family: 'Montserrat', sans-serif;
+    color: white; 
+}
+.pladur-service {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(100% - 20px); 
+    max-width: 400px; 
+    height: auto; 
+    text-align: center;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pladur-service:hover {
+    transform: translateY(-10px);
+}
+
+.pladur-service h2 {
+    background-color: #444;
+    color: white;
+    margin: 0;
+    padding: 10px 0; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
+.pladur-service img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+}
+
+.pladur-service p {
+    padding: 10px;
+    color: #333;
+    font-size: 14px; 
+    margin: 0;
+    overflow-y: auto; 
+}
+
+
+/*********************************responsivee***********************************/
+
+
+@media screen and (max-width: 768px) {
+    .pladur-service {
+        width: calc(50% - 40px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pladur-service {
+        width: calc(100% - 40px);
+    }
+}
