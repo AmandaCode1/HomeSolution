@@ -67,14 +67,13 @@
         </div>
       </div>
     </div>
-
     <div class="auth-container" *ngIf="autenticado">
       <div class="welcome-message">Bienvenido, {{ nombre }}</div>
       <div class="user-info">
-        <p><strong>Nombre:</strong> </p>
-        <p><strong>Correo Electrónico:</strong> </p>
-        <p><strong>Dirección:</strong> </p>
-        <p><strong>Teléfono:</strong></p>
+        <p><strong>Nombre:</strong> {{ nombre }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ userId }}</p>
+        <p><strong>Dirección:</strong> {{ registroDto.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ registroDto.telefono }}</p>
       </div>
       <div class="user-offer">
         <h3>Oferta del Usuario</h3>
@@ -82,7 +81,6 @@
       </div>
       <br><br><br><br>
       <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
-     
     </div>
   </main>
 </div>

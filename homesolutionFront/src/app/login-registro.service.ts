@@ -19,4 +19,8 @@ export class LoginRegistroService {
   register(registroDto: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/Registro`, registroDto);
   }
+  getOfertasUsuario(idUsuario: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/VerOfertasdeUsuario/${idUsuario}`);
+  }
+
 }

@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
     nombre: '',
     password: ''
   };
+  userId= '';
   autenticado: boolean = false;
-
+  ofertasUsuario: any[] = [];
   constructor(
     private loginRegistroService: LoginRegistroService,
     private sesionService: SesionService,
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.autenticado = this.sesionService.estaAutenticado();
     this.nombre = localStorage.getItem('nombreUsuario') || '';
-  
+    this.userId = localStorage.getItem('userId')||'';
   }
 
   alternarFormulario(): void {
@@ -97,10 +98,11 @@ export class LoginComponent implements OnInit {
 
     try {
       const response = await this.loginRegistroService.login(this.loginDto).toPromise();
-      this.sesionService.iniciarSesion(response.token, response.rol);
+      this.sesionService.iniciarSesion(response.token, response.rol, response.userId);
       this.autenticado = true;
       this.nombre = this.loginDto.nombre;
       localStorage.setItem('nombreUsuario', this.nombre);
+      await this.obtenerOfertasUsuario();
       window.location.reload();
     } catch (error) {
       this.loginErrorMessage = 'Usuario o contraseña incorrecta';
@@ -113,6 +115,7 @@ export class LoginComponent implements OnInit {
     this.sesionService.cerrarSesion();
     this.autenticado = false;
     this.nombre = '';
+    this.ofertasUsuario = [];
     window.location.reload();
   }
 
@@ -123,4 +126,14 @@ export class LoginComponent implements OnInit {
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+  private async obtenerOfertasUsuario(): Promise<void> {
+    try {
+      const idUsuario = this.sesionService.obtenerIdUsuario();
+      const response = await this.loginRegistroService.getOfertasUsuario(idUsuario).toPromise();
+      this.ofertasUsuario = response;
+    } catch (error) {
+      console.error('Error al obtener las ofertas del usuario.', error);
+    }
+}
 }
