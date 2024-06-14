@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { ElectricidadComponent } from './electricidad/electricidad.component';
 import { ClimatizacionComponent } from './climatizacion/climatizacion.component';
 import { PladurComponent } from './pladur/pladur.component';
 import { FontaneriaComponent } from './fontaneria/fontaneria.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -52,6 +53,12 @@ import { FontaneriaComponent } from './fontaneria/fontaneria.component';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     })
   ],
   providers: [LoginRegistroService],
