@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegistroDto } from './registroDto.model';
@@ -9,6 +9,10 @@ import { LoginDto } from './loginDto.model';
 })
 export class LoginRegistroService {
   private apiUrl = 'https://localhost:7161/api/LoginRegistro';
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`
+  });
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +23,11 @@ export class LoginRegistroService {
   register(registroDto: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/Registro`, registroDto);
   }
-  getOfertasUsuario(idUsuario: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/VerOfertasdeUsuario/${idUsuario}`);
+  obtenerListaUsuarios(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Usuarios/VerLista`, { headers: this.headers });
   }
 
+  obtenerDetallesUsuario(nombre: string): Observable<RegistroDto> {
+    return this.http.get<RegistroDto>(`${this.apiUrl}/Usuarios/DetalleUsuario?nombre=${nombre}`, { headers: this.headers });
+  }
 }

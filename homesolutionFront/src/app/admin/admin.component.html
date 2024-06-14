@@ -10,347 +10,467 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOferta">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOferta"
-      aria-expanded="true" aria-controls="collapseOferta">
-      Oferta
-    </button>
-  </h2>
-  <div id="collapseOferta" class="accordion-collapse collapse show" aria-labelledby="headingOferta"
-    data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingIdOferta">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIdOferta"
-            aria-expanded="false" aria-controls="collapseIdOferta">
-            ID de Oferta
-          </button>
-        </h2>
-        <div id="collapseIdOferta" class="accordion-collapse collapse" aria-labelledby="headingIdOferta"
-          data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <label for="idOferta">ID de la oferta:</label>
-            <input type="number" id="idOferta-1" [(ngModel)]="ofertaId">
-            <button (click)="verOferta()">Ver Oferta</button>
-
-            <div *ngIf="oferta">
-              <h2>Detalles de la oferta</h2>
-              <p>Descripción: {{ oferta.descripcionOferta }}</p>
-              <p>Categoría: {{ oferta.categoriaServicio }}</p>
-              <p>ID del Servicio: {{ oferta.servicioId }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-            <h2>Nueva Oferta</h2>
-            <form (submit)="crearOferta(nuevaOferta)">
-              Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta"
-                required><br>
-              Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio"
-                required><br>
-              Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId" required><br>
-              <button type="submit">Crear Oferta</button>
-              <div *ngIf="ofertaCreada" class="mensaje-exito">
-                Oferta Creada
-              </div>
-            </form>
-
-          </div>
-        </div>
-        <div>
-          <h2>Editar Oferta</h2>
-          <div>
-            <label for="ofertaId">ID de la oferta:</label>
-            <input type="number" id="ofertaId0" [(ngModel)]="ofertaId" name="ofertaId">
-            <button (click)="verOferta()">Buscar Oferta</button>
-          </div>
-          <form *ngIf="oferta" (ngSubmit)="editarOferta()">
-            <div>
-              <label for="descripcion">Descripción de la oferta:</label>
-              <input type="text" id="descripcion" [(ngModel)]="oferta.descripcionOferta" name="descripcion">
-            </div>
-            <div>
-              <label for="categoria">Categoría del servicio:</label>
-              <input type="text" id="categoria" [(ngModel)]="oferta.categoriaServicio" name="categoria">
-            </div>
-            <div>
-              <label for="servicio">ID del servicio:</label>
-              <input type="number" id="servicio" [(ngModel)]="oferta.servicioId" name="servicio">
-            </div>
-            <button type="submit">Guardar cambios</button>
-          </form>
-        </div>
-        <div>
-          <h2>Eliminar Oferta</h2>
-          <div>
-            <label for="ofertaId">ID de la oferta:</label>
-            <input type="number" id="ofertaId1" [(ngModel)]="ofertaId" name="ofertaId">
-            <button (click)="borrarOferta()">Eliminar Oferta</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="accordion-item">
-  <h2 class="accordion-header" id="headingServicios">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-      data-bs-target="#collapseServicios" aria-expanded="false" aria-controls="collapseServicios">
-      Servicios
-    </button>
-  </h2>
-  <div id="collapseServicios" class="accordion-collapse collapse" aria-labelledby="headingServicios"
-    data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <div>
-        <h2>Ver Servicio</h2>
-        <div>
-          <label for="servicioId">ID del Servicio:</label>
-          <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
-          <button (click)="verServicio()">Ver Servicio</button>
-        </div>
-        <div *ngIf="servicio">
-          <h3>Detalles del Servicio</h3>
-          <p>ID: {{ servicio.servicioId }}</p>
-          <p>Descripción: {{ servicio.descripcionServicio }}</p>
-          <p>Precio: {{ servicio.precio }}</p>
-          <p>Duración: {{ servicio.duracion }}</p>
-          <p>Categoría: {{ servicio.categoriaServicio }}</p>
-        </div>
-      </div>
-      <div>
-        <h2>Crear Servicio</h2>
-        <form (ngSubmit)="crearServicio()">
-          <div>
-            <label for="descripcionServicio">Descripción del Servicio:</label>
-            <input type="text" id="descripcionServicio1" [(ngModel)]="nuevoServicio.descripcionServicio"
-              name="descripcionServicio">
-          </div>
-          <div>
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" [(ngModel)]="nuevoServicio.precio" name="precio">
-          </div>
-          <div>
-            <label for="duracion">Duración:</label>
-            <input type="number" id="duracion" [(ngModel)]="nuevoServicio.duracion" name="duracion">
-          </div>
-          <div>
-            <label for="categoriaServicio">Categoría del Servicio:</label>
-            <input type="text" id="categoriaServicio2" [(ngModel)]="nuevoServicio.categoriaServicio"
-              name="categoriaServicio">
-          </div>
-          <button type="submit">Crear Servicio</button>
-          <div *ngIf="servicioCreado" class="mensaje-exito">
-            Servicio Creado
-          </div>
-        </form>
-      </div>
-      <div>
-        <h2>Editar Servicio</h2>
-        <div>
-          <label for="servicioId">ID del Servicio:</label>
-          <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
-        </div>
-        <div>
-          <label for="descripcionServicio">Nueva descripción del Servicio:</label>
-          <input type="text" id="descripcionServicio2" [(ngModel)]="editarServicioDto.descripcionServicio"
-            name="descripcionServicio">
-        </div>
-        <div>
-          <label for="precio">Nuevo precio:</label>
-          <input type="number" id="precio" [(ngModel)]="editarServicioDto.precio" name="precio">
-        </div>
-        <div>
-          <label for="duracion">Nueva duración:</label>
-          <input type="number" id="duracion" [(ngModel)]="editarServicioDto.duracion" name="duracion">
-        </div>
-        <div>
-          <label for="categoriaServicio">Nueva categoría del Servicio:</label>
-          <input type="text" id="categoriaServicio3" [(ngModel)]="editarServicioDto.categoriaServicio"
-            name="categoriaServicio">
-        </div>
-        <button (click)="editarServicio()">Editar Servicio</button>
-      </div>
-      <div>
-        <h2>Eliminar Servicio</h2>
-        <div>
-          <label for="servicioId">ID del Servicio:</label>
-          <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId">
-          <button (click)="borrarServicio()">Eliminar Servicio</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="accordion-item">
-  <h2 class="accordion-header" id="headingUsuario">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuario"
-      aria-expanded="false" aria-controls="collapseUsuario">
-      Usuario
-    </button>
-  </h2>
-  <div id="collapseUsuario" class="accordion-collapse collapse" aria-labelledby="headingUsuario"
-    data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <div>
-        <h2>Lista de Usuarios</h2>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingUsuarios">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios"
-              aria-expanded="false" aria-controls="collapseUsuarios">
-              Lista de Usuarios
+              aria-expanded="true" aria-controls="collapseOferta">
+              Oferta
             </button>
           </h2>
-          <div id="collapseUsuarios" class="accordion-collapse collapse" aria-labelledby="headingUsuarios">
+          <div id="collapseOferta" class="accordion-collapse collapse show" aria-labelledby="headingOferta"
+            data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <ul>
-                <li *ngFor="let usuario of listaUsuarios">
-                  <p>ID: {{ usuario.usuarioId }}</p>
-                  <p>Nombre: {{ usuario.nombreUsuario }}</p>
-                  <p>Rol: {{ usuario.rol }}</p>
-                  <p>Correo Electrónico: {{ usuario.correoElectronico }}</p>
-                  <p>Dirección: {{ usuario.direccion }}</p>
-                  <p>Teléfono: {{ usuario.telefono }}</p>
-                </li>
-              </ul>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingIdOferta">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseIdOferta" aria-expanded="false" aria-controls="collapseIdOferta">
+                    ID de Oferta
+                  </button>
+                </h2>
+                <div id="collapseIdOferta" class="accordion-collapse collapse" aria-labelledby="headingIdOferta"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <label for="idOferta">ID de la oferta:</label>
+                    <input type="number" id="idOferta-1" [(ngModel)]="ofertaId">
+                    <button (click)="verOferta()">Ver Oferta</button>
+
+                    <div *ngIf="oferta">
+                      <h2>Detalles de la oferta</h2>
+                      <p>Descripción: {{ oferta.descripcionOferta }}</p>
+                      <p>Categoría: {{ oferta.categoriaServicio }}</p>
+                      <p>ID del Servicio: {{ oferta.servicioId }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="accordion-header" id="headingNuevaOferta">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseNuevaOferta" aria-expanded="false" aria-controls="collapseNuevaOferta">
+                  Nueva Oferta
+                </button>
+              </h2>
+              <div id="collapseNuevaOferta" class="accordion-collapse collapse" aria-labelledby="headingNuevaOferta"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <form (submit)="crearOferta(nuevaOferta)">
+                    Descripción: <input type="text" name="descripcionOferta" [(ngModel)]="nuevaOferta.descripcionOferta"
+                      required><br>
+                    Categoría: <input type="text" name="categoriaServicio" [(ngModel)]="nuevaOferta.categoriaServicio"
+                      required><br>
+                    Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId"
+                      required><br>
+                    <button type="submit">Crear Oferta</button>
+                    <div *ngIf="ofertaCreada" class="mensaje-exito">
+                      Oferta Creada
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+              <div>
+                <h2 class="accordion-header" id="headingEditarOferta">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseEditarOferta" aria-expanded="false" aria-controls="collapseEditarOferta">
+                    Editar Oferta
+                  </button>
+                </h2>
+                <div id="collapseEditarOferta" class="accordion-collapse collapse" aria-labelledby="headingEditarOferta"
+                  data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div>
+                      <label for="ofertaId">ID de la oferta:</label>
+                      <input type="number" id="ofertaId0" [(ngModel)]="ofertaId" name="ofertaId">
+                      <button (click)="verOferta()">Buscar Oferta</button>
+                    </div>
+                    <form *ngIf="oferta" (ngSubmit)="editarOferta()">
+                      <div>
+                        <label for="descripcion">Descripción de la oferta:</label>
+                        <input type="text" id="descripcion" [(ngModel)]="oferta.descripcionOferta" name="descripcion">
+                      </div>
+                      <div>
+                        <label for="categoria">Categoría del servicio:</label>
+                        <input type="text" id="categoria" [(ngModel)]="oferta.categoriaServicio" name="categoria">
+                      </div>
+                      <div>
+                        <label for="servicio">ID del servicio:</label>
+                        <input type="number" id="servicio" [(ngModel)]="oferta.servicioId" name="servicio">
+                      </div>
+                      <button type="submit">Guardar cambios</button>
+                    </form>
+                  </div>
+                  <div>
+                    <h2>Eliminar Oferta</h2>
+                    <div>
+                      <label for="ofertaId">ID de la oferta:</label>
+                      <input type="number" id="ofertaId1" [(ngModel)]="ofertaId" name="ofertaId">
+                      <button (click)="borrarOferta()">Eliminar Oferta</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <h2>Crear Usuario</h2>
-        <div>
-          <label for="nombreUsuario">Nombre de Usuario:</label>
-          <input type="text" id="nombreUsuario" [(ngModel)]="crearUsuarioDto.nombreUsuario" name="nombreUsuario">
-        </div>
-        <div>
-          <label for="correoElectronico">Correo Electrónico:</label>
-          <input type="email" id="correoElectronico1" [(ngModel)]="crearUsuarioDto.correoElectronico"
-            name="correoElectronico">
-        </div>
-        <div>
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password1" [(ngModel)]="crearUsuarioDto.password" name="password">
-        </div>
-        <div>
-          <label for="rol">Rol:</label>
-          <input type="text" id="rol1" [(ngModel)]="crearUsuarioDto.rol" name="rol">
-        </div>
-        <div>
-          <label for="telefono">Teléfono:</label>
-          <input type="text" id="telefono1" [(ngModel)]="crearUsuarioDto.telefono" name="telefono">
-        </div>
-        <div>
-          <label for="direccion">Dirección:</label>
-          <input type="text" id="direccion1" [(ngModel)]="crearUsuarioDto.direccion" name="direccion">
-        </div>
-        <button (click)="crearUsuario()">Crear Usuario</button>
-        <div *ngIf="usuarioCreado" class="mensaje-exito">
-          usuario creado
-        </div>
-      </div>
-      <div>
-        <h2>Editar Usuario</h2>
-        <div>
-          <label for="idUsuario">ID del Usuario:</label>
-          <input type="number" id="idUsuario2" [(ngModel)]="idUsuario" name="idUsuario">
-        </div>
-        <div>
-          <label for="nombreUsuario">Nuevo Nombre de Usuario:</label>
-          <input type="text" id="nombreUsuario1" [(ngModel)]="AdminEditarUsuarioDto.nombreUsuario" name="nombreUsuario">
-        </div>
-        <div>
-          <label for="password">Nueva password:</label>
-          <input type="text" id="password2" [(ngModel)]="AdminEditarUsuarioDto.password" name="password">
-        </div>
-        <div>
-          <label for="rol">Nuevo Rol:</label>
-          <input type="text" id="rol2" [(ngModel)]="AdminEditarUsuarioDto.rol" name="rol">
-        </div>
-        <div>
-          <label for="correoElectronico">Nuevo Correo Electrónico:</label>
-          <input type="email" id="correoElectronico2" [(ngModel)]="AdminEditarUsuarioDto.correoElectronico"
-            name="correoElectronico">
-        </div>
-        <div>
-          <label for="direccion">Nueva Dirección:</label>
-          <input type="text" id="direccion2" [(ngModel)]="AdminEditarUsuarioDto.direccion" name="direccion">
-        </div>
-        <div>
-          <label for="telefono">Nuevo Teléfono:</label>
-          <input type="text" id="telefono2" [(ngModel)]="AdminEditarUsuarioDto.telefono" name="telefono">
-        </div>
-        <button (click)="editarUsuario()">Editar Usuario</button>
-      </div>
-      <div>
-        <h2>Borrar Usuario</h2>
-        <div>
-          <label for="idUsuario">ID del Usuario:</label>
-          <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario">
-        </div>
-        <button (click)="borrarUsuario()">Borrar Usuario</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="accordion-item">
-  <h2 class="accordion-header" id="headingUsuarioOferta">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-      data-bs-target="#collapseUsuarioOferta" aria-expanded="false" aria-controls="collapseUsuarioOferta">
-      Usuario Oferta
-    </button>
-  </h2>
-  <div id="collapseUsuarioOferta" class="accordion-collapse collapse" aria-labelledby="headingUsuarioOferta"
-    data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <div *ngIf="usuariosOfertas">
-        <h2>Usuarios Ofertas</h2>
-        <ul>
-          <li *ngFor="let usuarioOferta of usuariosOfertas">
-            <p>Usuario ID: {{ usuarioOferta.usuarioId }}</p>
-            <p>Oferta ID: {{ usuarioOferta.ofertaId }}</p>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2>Enlazar Oferta a Usuario</h2>
-        <form (ngSubmit)="enlazarOfertaUsuario()">
-          <div class="form-group">
-            <label for="usuarioId">ID del Usuario:</label>
-            <input type="number" id="usuarioId3" [(ngModel)]="usuarioId" name="usuarioId" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="ofertaId">ID de la Oferta:</label>
-            <input type="number" id="ofertaId2" [(ngModel)]="ofertaId" name="ofertaId" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Enlazar</button>
-          <div *ngIf="enlazarOferta" class="mensaje-exito">
-            oferta enlazada
-          </div>
-        </form>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingServicios">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseServicios" aria-expanded="false" aria-controls="collapseServicios">
+                Servicios
+              </button>
+            </h2>
+            <div id="collapseServicios" class="accordion-collapse collapse" aria-labelledby="headingServicios"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingIdServicio">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseIdServicio" aria-expanded="false" aria-controls="collapseIdServicio">
+                      ID del Servicio
+                    </button>
+                  </h2>
+                  <div id="collapseIdServicio" class="accordion-collapse collapse" aria-labelledby="headingIdServicio"
+                    data-bs-parent="#collapseServicios">
+                    <div class="accordion-body">
+                      <div>
+                        <label for="servicioId">ID del Servicio:</label>
+                        <input type="number" id="servicioId" [(ngModel)]="servicioId" name="servicioId"
+                          class="form-control">
+                        <button (click)="verServicio()" class="btn btn-primary mt-2">Ver Servicio</button>
+                      </div>
+                      <div *ngIf="servicio">
+                        <h3>Detalles del Servicio</h3>
+                        <p>ID: {{ servicio.servicioId }}</p>
+                        <p>Descripción: {{ servicio.descripcionServicio }}</p>
+                        <p>Precio: {{ servicio.precio }}</p>
+                        <p>Duración: {{ servicio.duracion }}</p>
+                        <p>Categoría: {{ servicio.categoriaServicio }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingCrearServicio">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseCrearServicio" aria-expanded="false"
+                      aria-controls="collapseCrearServicio">
+                      Crear Servicio
+                    </button>
+                  </h2>
+                  <div id="collapseCrearServicio" class="accordion-collapse collapse"
+                    aria-labelledby="headingCrearServicio" data-bs-parent="#collapseServicios">
+                    <div class="accordion-body">
+                      <form (ngSubmit)="crearServicio()">
+                        <div class="mb-3">
+                          <label for="descripcionServicio">Descripción del Servicio:</label>
+                          <input type="text" id="descripcionServicio1" [(ngModel)]="nuevoServicio.descripcionServicio"
+                            name="descripcionServicio" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                          <label for="precio">Precio:</label>
+                          <input type="number" id="precio" [(ngModel)]="nuevoServicio.precio" name="precio"
+                            class="form-control">
+                        </div>
+                        <div class="mb-3">
+                          <label for="duracion">Duración:</label>
+                          <input type="number" id="duracion" [(ngModel)]="nuevoServicio.duracion" name="duracion"
+                            class="form-control">
+                        </div>
+                        <div class="mb-3">
+                          <label for="categoriaServicio">Categoría del Servicio:</label>
+                          <input type="text" id="categoriaServicio2" [(ngModel)]="nuevoServicio.categoriaServicio"
+                            name="categoriaServicio" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Crear Servicio</button>
+                        <div *ngIf="servicioCreado" class="mensaje-exito mt-3">
+                          Servicio Creado
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEditarServicio">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseEditarServicio" aria-expanded="false"
+                      aria-controls="collapseEditarServicio">
+                      Editar Servicio
+                    </button>
+                  </h2>
+                  <div id="collapseEditarServicio" class="accordion-collapse collapse"
+                    aria-labelledby="headingEditarServicio" data-bs-parent="#collapseServicios">
+                    <div class="accordion-body">
+                      <div>
+                        <label for="editarServicioId">ID del Servicio:</label>
+                        <input type="number" id="editarServicioId" [(ngModel)]="servicioId" name="servicioId"
+                          class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="editarDescripcionServicio">Nueva descripción del Servicio:</label>
+                        <input type="text" id="editarDescripcionServicio"
+                          [(ngModel)]="editarServicioDto.descripcionServicio" name="descripcionServicio"
+                          class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="editarPrecio">Nuevo precio:</label>
+                        <input type="number" id="editarPrecio" [(ngModel)]="editarServicioDto.precio" name="precio"
+                          class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="editarDuracion">Nueva duración:</label>
+                        <input type="number" id="editarDuracion" [(ngModel)]="editarServicioDto.duracion"
+                          name="duracion" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label for="editarCategoriaServicio">Nueva categoría del Servicio:</label>
+                        <input type="text" id="editarCategoriaServicio"
+                          [(ngModel)]="editarServicioDto.categoriaServicio" name="categoriaServicio"
+                          class="form-control">
+                      </div>
+                      <button (click)="editarServicio()" class="btn btn-primary">Editar Servicio</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEliminarServicio">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseEliminarServicio" aria-expanded="false"
+                      aria-controls="collapseEliminarServicio">
+                      Eliminar Servicio
+                    </button>
+                  </h2>
+                  <div id="collapseEliminarServicio" class="accordion-collapse collapse"
+                    aria-labelledby="headingEliminarServicio" data-bs-parent="#collapseServicios">
+                    <div class="accordion-body">
+                      <div>
+                        <label for="eliminarServicioId">ID del Servicio:</label>
+                        <input type="number" id="eliminarServicioId" [(ngModel)]="servicioId" name="servicioId"
+                          class="form-control">
+                        <button (click)="borrarServicio()" class="btn btn-danger mt-2">Eliminar Servicio</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-      </div>
-      <div>
-        <h2>Borrar Oferta de Usuario</h2>
-        <form (ngSubmit)="borrarOfertaUsuario()">
-          <div class="form-group">
-            <label for="usuarioId">ID del Usuario:</label>
-            <input type="number" id="usuarioId4" [(ngModel)]="usuarioId" name="usuarioId" class="form-control" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="ofertaId">ID de la Oferta:</label>
-            <input type="number" id="ofertaId3" [(ngModel)]="ofertaId" name="ofertaId" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-danger" (ngSubmit)="borrarOfertaUsuario()">Borrar</button>
-          <div *ngIf="ofertausuarioBorrada" class="mensaje-exito">
-            OfertaUsuario Borrada
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingUsuario">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseUsuario" aria-expanded="false" aria-controls="collapseUsuario">
+                Usuario
+              </button>
+            </h2>
+            <div id="collapseUsuario" class="accordion-collapse collapse" aria-labelledby="headingUsuario"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingUsuarios">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
+                      Lista de Usuarios
+                    </button>
+                  </h2>
+                  <div id="collapseUsuarios" class="accordion-collapse collapse" aria-labelledby="headingUsuarios">
+                    <div class="accordion-body">
+                      <ul>
+                        <li *ngFor="let usuario of listaUsuarios">
+                          <p>ID: {{ usuario.usuarioId }}</p>
+                          <p>Nombre: {{ usuario.nombreUsuario }}</p>
+                          <p>Rol: {{ usuario.rol }}</p>
+                          <p>Correo Electrónico: {{ usuario.correoElectronico }}</p>
+                          <p>Dirección: {{ usuario.direccion }}</p>
+                          <p>Teléfono: {{ usuario.telefono }}</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingCrearUsuario">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseCrearUsuario" aria-expanded="false" aria-controls="collapseCrearUsuario">
+                      Crear Usuario
+                    </button>
+                  </h2>
+                  <div id="collapseCrearUsuario" class="accordion-collapse collapse"
+                    aria-labelledby="headingCrearUsuario">
+                    <div class="accordion-body">
+                      <div>
+                        <label for="nombreUsuario">Nombre de Usuario:</label>
+                        <input type="text" id="nombreUsuario" [(ngModel)]="crearUsuarioDto.nombreUsuario"
+                          name="nombreUsuario" class="form-control">
+                      </div>
+                      <div>
+                        <label for="correoElectronico">Correo Electrónico:</label>
+                        <input type="email" id="correoElectronico1" [(ngModel)]="crearUsuarioDto.correoElectronico"
+                          name="correoElectronico" class="form-control">
+                      </div>
+                      <div>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password1" [(ngModel)]="crearUsuarioDto.password" name="password"
+                          class="form-control">
+                      </div>
+                      <div>
+                        <label for="rol">Rol:</label>
+                        <input type="text" id="rol1" [(ngModel)]="crearUsuarioDto.rol" name="rol" class="form-control">
+                      </div>
+                      <div>
+                        <label for="telefono">Teléfono:</label>
+                        <input type="text" id="telefono1" [(ngModel)]="crearUsuarioDto.telefono" name="telefono"
+                          class="form-control">
+                      </div>
+                      <div>
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion1" [(ngModel)]="crearUsuarioDto.direccion" name="direccion"
+                          class="form-control">
+                      </div>
+                      <button (click)="crearUsuario()" class="btn btn-primary mt-3">Crear Usuario</button>
+                      <div *ngIf="usuarioCreado" class="mensaje-exito mt-2">
+                        Usuario creado
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingEditarUsuario">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseEditarUsuario" aria-expanded="false"
+                      aria-controls="collapseEditarUsuario">
+                      Editar Usuario
+                    </button>
+                  </h2>
+                  <div id="collapseEditarUsuario" class="accordion-collapse collapse"
+                    aria-labelledby="headingEditarUsuario">
+                    <div class="accordion-body">
+                      <div>
+                        <label for="idUsuario">ID del Usuario:</label>
+                        <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario"
+                          class="form-control">
+                      </div>
+                      <div>
+                        <label for="nombreUsuario">Nuevo Nombre de Usuario:</label>
+                        <input type="text" id="nombreUsuario1" [(ngModel)]="AdminEditarUsuarioDto.nombreUsuario"
+                          name="nombreUsuario" class="form-control">
+                      </div>
+                      <div>
+                        <label for="password">Nueva Contraseña:</label>
+                        <input type="password" id="password2" [(ngModel)]="AdminEditarUsuarioDto.password"
+                          name="password" class="form-control">
+                      </div>
+                      <div>
+                        <label for="rol">Nuevo Rol:</label>
+                        <input type="text" id="rol2" [(ngModel)]="AdminEditarUsuarioDto.rol" name="rol"
+                          class="form-control">
+                      </div>
+                      <div>
+                        <label for="correoElectronico">Nuevo Correo Electrónico:</label>
+                        <input type="email" id="correoElectronico2"
+                          [(ngModel)]="AdminEditarUsuarioDto.correoElectronico" name="correoElectronico"
+                          class="form-control">
+                      </div>
+                      <div>
+                        <label for="direccion">Nueva Dirección:</label>
+                        <input type="text" id="direccion2" [(ngModel)]="AdminEditarUsuarioDto.direccion"
+                          name="direccion" class="form-control">
+                      </div>
+                      <div>
+                        <label for="telefono">Nuevo Teléfono:</label>
+                        <input type="text" id="telefono2" [(ngModel)]="AdminEditarUsuarioDto.telefono" name="telefono"
+                          class="form-control">
+                      </div>
+                      <button (click)="editarUsuario()" class="btn btn-primary mt-3">Editar Usuario</button>
+                    </div>
+                  </div>
+                </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingUsuarioOferta">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseUsuarioOferta" aria-expanded="false"
+                      aria-controls="collapseUsuarioOferta">
+                      Usuario Oferta
+                    </button>
+                  </h2>
+                  <div id="collapseUsuarioOferta" class="accordion-collapse collapse"
+                    aria-labelledby="headingUsuarioOferta" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingUsuariosOfertas">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseUsuariosOfertas" aria-expanded="false"
+                            aria-controls="collapseUsuariosOfertas">
+                            Lista de Usuarios Ofertas
+                          </button>
+                        </h2>
+                        <div id="collapseUsuariosOfertas" class="accordion-collapse collapse"
+                          aria-labelledby="headingUsuariosOfertas">
+                          <div class="accordion-body">
+                            <ul>
+                              <li *ngFor="let usuarioOferta of usuariosOfertas">
+                                <p>ID de Usuario: {{ usuarioOferta.usuarioId }}</p>
+                                <p>ID de Oferta: {{ usuarioOferta.ofertaId }}</p>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEnlazarOfertaUsuario">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEnlazarOfertaUsuario" aria-expanded="false"
+                            aria-controls="collapseEnlazarOfertaUsuario">
+                            Enlazar Oferta a Usuario
+                          </button>
+                        </h2>
+                        <div id="collapseEnlazarOfertaUsuario" class="accordion-collapse collapse"
+                          aria-labelledby="headingEnlazarOfertaUsuario">
+                          <div class="accordion-body">
+                            <form (ngSubmit)="enlazarOfertaUsuario()">
+                              <div class="mb-3">
+                                <label for="usuarioId" class="form-label">ID del Usuario:</label>
+                                <input type="number" id="usuarioId" [(ngModel)]="usuarioId" name="usuarioId"
+                                  class="form-control" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="ofertaId" class="form-label">ID de la Oferta:</label>
+                                <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId"
+                                  class="form-control" required>
+                              </div>
+                              <button type="submit" class="btn btn-primary">Enlazar</button>
+                              <div *ngIf="enlazarOferta" class="mensaje-exito mt-3">
+                                Oferta enlazada exitosamente.
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBorrarOfertaUsuario">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseBorrarOfertaUsuario" aria-expanded="false"
+                            aria-controls="collapseBorrarOfertaUsuario">
+                            Borrar Oferta de Usuario
+                          </button>
+                        </h2>
+                        <div id="collapseBorrarOfertaUsuario" class="accordion-collapse collapse"
+                          aria-labelledby="headingBorrarOfertaUsuario">
+                          <div class="accordion-body">
+                            <form (ngSubmit)="borrarOfertaUsuario()">
+                              <div class="mb-3">
+                                <label for="usuarioId" class="form-label">ID del Usuario:</label>
+                                <input type="number" id="usuarioId" [(ngModel)]="usuarioId" name="usuarioId"
+                                  class="form-control" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="ofertaId" class="form-label">ID de la Oferta:</label>
+                                <input type="number" id="ofertaId" [(ngModel)]="ofertaId" name="ofertaId"
+                                  class="form-control" required>
+                              </div>
+                              <button type="submit" class="btn btn-danger">Borrar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br><br>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>

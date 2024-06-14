@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { LoginRegistroService } from './login-registro.service';
-import { UrgenciasComponent } from './urgencias/urgencias.component';
+import { UrgenciasComponent } from './quehacemos/urgencias/urgencias.component';
 import { ContactoComponent } from './contactos/contactos.component';
 import { HomesolutionComponent } from './homesolution/homesolution.component';
 import { QuehacemosComponent } from './quehacemos/quehacemos.component';

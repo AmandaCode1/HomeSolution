@@ -68,18 +68,8 @@
       </div>
     </div>
     <div class="auth-container" *ngIf="autenticado">
-      <div class="welcome-message">Bienvenido, {{ nombre }}</div>
-      <div class="user-info">
-        <p><strong>Nombre:</strong> {{ nombre }}</p>
-        <p><strong>Correo Electrónico:</strong> {{ userId }}</p>
-        <p><strong>Dirección:</strong> {{ registroDto.direccion }}</p>
-        <p><strong>Teléfono:</strong> {{ registroDto.telefono }}</p>
-      </div>
-      <div class="user-offer">
-        <h3>Oferta del Usuario</h3>
-        <p></p>
-      </div>
-      <br><br><br><br>
+      <div class="welcome-message"><h2>Bienvenido</h2><br><h3>{{ nombre }}</h3></div>
+      <br><br><br><br><br>
       <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
     </div>
   </main>

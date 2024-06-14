@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomesolutionComponent } from './homesolution/homesolution.component';
 import { ContactoComponent } from './contactos/contactos.component';
 import { QuehacemosComponent } from './quehacemos/quehacemos.component';
-import { UrgenciasComponent } from './urgencias/urgencias.component';
+import { UrgenciasComponent } from './quehacemos/urgencias/urgencias.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { OfertasComponent } from './ofertas/ofertas.component';

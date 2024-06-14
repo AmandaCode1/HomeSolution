@@ -1,21 +1,26 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head><br><br><br>
+<header>
+    <h1>Ofertas</h1>
+
+</header>
 <div>
     <img src="assets/img/fondo.jpg" alt="Imagen de Encabezado" class="header-img">
     <div class="container">
-        <h1>Ofertas</h1>
-        <div *ngIf="ofertas.length > 0; else noData">
-            <div *ngFor="let oferta of ofertas" class="data-block">
-                <div class="data-content">
-                    <p><strong>Oferta:</strong> {{oferta.descripcionOferta}}</p>
-                    <p><strong>Categoría:</strong> {{oferta.categoriaServicio}}</p>
-                </div>
+        <div class="row">
+          <div *ngFor="let oferta of ofertas" class="col-md-6">
+            <div class="data-block">
+              <div class="data-content">
+                <h3 class="offer-title">{{ oferta.descripcionOferta }}</h3>
+                <p class="offer-category">{{ oferta.categoriaServicio }}</p>
+              </div>
             </div>
-        </div>  
+          </div>
+        </div>
+      </div>
         <ng-template #noData>
-            <p>No hay ofertas disponibles en este momento.</p>
+            <p class="animate__animated animate__fadeIn">No hay ofertas disponibles en este momento.</p>
         </ng-template>
-    </div>
-</div>
-<br>
-<br><b><br><br><br>
-<br><br>
-<br>
+    </div><br><br><br>
+    

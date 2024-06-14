@@ -7,53 +7,100 @@
   opacity: 0.6; 
 }
 
-.container {
-  margin-top: 100px;
+header {
   text-align: center;
+  margin: 20px 0; 
+  background-color: #444; 
+  padding: 20px; 
 }
 
-h1 {
-  margin-bottom: 20px;
+header h1 {
+  font-size: 3em; 
+  font-family: 'Montserrat', sans-serif;
+  color: white; 
+}
+.container {
+
+  padding: 20px;
 }
 
 .data-block {
-  display: inline-block;
-  width: 40%;
-  height: 40%;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 20px;
-  background-color: #f8f9fa;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: white; 
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; 
 }
 
 .data-block:hover {
-  background-color: #86abd3; 
-  animation: bounceRotate 1s infinite;
+  box-shadow: 0 0 20px rgba(0, 0, 128, 0.4); 
+  transform: translateY(-5px); 
 }
 
-@keyframes bounceRotate {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-20px) rotate(-5deg);
-  }
-  50% {
-    transform: translateY(0) rotate(0deg);
-  }
-  75% {
-    transform: translateY(-20px) rotate(5deg);
-  }
+.offer-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: black; 
+}
+
+.offer-category {
+  color: #666; 
+  text-transform: capitalize;
 }
 
 .data-content {
-  font-size: 18px;
-  color: #2c3237;
+  padding: 10px;
 }
 
-.data-content strong {
-  color: #ffffff;
+.offer-category,
+.offer-title {
+  color: black; 
 }
+
+
 /*********************************responsivee***********************************/
+
+@media screen and (max-width: 1200px) {
+  .container {
+      padding: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .col-md-6 {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .data-block {
+      padding: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .data-block {
+      padding: 10px;
+  }
+  .offer-title {
+      font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .data-block {
+      padding: 8px;
+  }
+  .offer-title {
+      font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .data-block {
+      padding: 5px;
+  }
+  .offer-title {
+      font-size: 1rem;
+  }
+}
