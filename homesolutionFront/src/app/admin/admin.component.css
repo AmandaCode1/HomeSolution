@@ -83,7 +83,7 @@ button:hover {
 .accordion-button:not(.collapsed) {
   background-color: #4c5c6d;
 }
-
+  
 .accordion-button:focus {
   box-shadow: none;
 }

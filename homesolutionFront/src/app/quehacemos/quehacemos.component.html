@@ -1,9 +1,15 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<header>
+  
+  <h1>Servicios</h1>
+</header>
 <div>
   <img src="assets/img/fondo.jpg" alt="Imagen de cabecera" class="header-img">
 
   <div class="container">
-    <br><br><br>
-    <h1>Qué Hacemos</h1>
+    
     <div *ngIf="data.length > 0; else noData" class="grid-container">
       <div *ngFor="let item of data" class="data-block">
         <div class="data-content">
