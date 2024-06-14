@@ -76,7 +76,11 @@ export class AdminComponent implements OnInit {
 usuarioId: any;
   mensaje: string | undefined;
   mensaje2: string | undefined;
-
+  ofertaCreada = false;
+  servicioCreado=false;
+  usuarioCreado=false;
+  enlazarOferta=false;
+  ofertausuarioBorrada=false;
   constructor(private adminService: AdminService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -92,6 +96,10 @@ usuarioId: any;
       (data) => {
 
         console.log('Oferta creada correctamente:', data);
+        this.ofertaCreada = true;
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000); 
       },
       (error) => {
 
@@ -109,6 +117,7 @@ usuarioId: any;
         this.oferta = data;
       },
       (error) => {
+        alert('Error al obtener la oferta o La oferta no existe')
         console.error('Error al obtener la oferta:', error);
       }
     );
@@ -121,7 +130,9 @@ usuarioId: any;
     this.adminService.editarOferta(this.ofertaId, this.oferta).subscribe(
       (data) => {
         console.log('Oferta editada correctamente:', data);
-
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
@@ -143,16 +154,21 @@ usuarioId: any;
         console.log('Oferta eliminada correctamente:', data);
 
       },
+
       error => {
+      
         if (error instanceof HttpErrorResponse && error.status === 200) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000); 
           console.log(error.error);
         } else {
+
           console.error(`Error al eliminar la oferta con ID ${this.ofertaId}:`, error);
         }
 
       })
   }
-
   verServicio(): void {
     if (!this.servicioId) {
       alert('El ID del servicio debe estar relleno');
@@ -164,6 +180,7 @@ usuarioId: any;
         console.log('Servicio encontrado:', this.servicio);
       },
       (error) => {
+        alert('Error al obtener el servicio o el servicio no existe')
         console.error('Error al obtener el servicio:', error);
       }
     );
@@ -176,8 +193,11 @@ usuarioId: any;
     }
     this.adminService.crearServicio(this.nuevoServicio).subscribe(
       (data) => {
+        this.servicioCreado = true;
         console.log('Servicio creado correctamente:', data);
-
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
       },
       (error) => {
         console.error('Error al crear el servicio:', error);
@@ -194,10 +214,13 @@ usuarioId: any;
     this.adminService.editarServicio(this.servicioId, this.editarServicioDto).subscribe(
       (data) => {
         console.log('Servicio editado correctamente:', data);
-
+       
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000); 
           console.log(error.error);
         } else {
           console.error(`Error al editar el servicio con ID ${this.servicioId}:`, error);
@@ -218,6 +241,9 @@ usuarioId: any;
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
           console.log(error.error);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000); 
         } else {
           console.error('Error al eliminar el servicio:', error);
 
@@ -245,7 +271,10 @@ usuarioId: any;
     this.adminService.crearUsuario(this.crearUsuarioDto).subscribe(
       (data) => {
         console.log('Usuario creado correctamente:', data);
-
+        this.usuarioCreado = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
       },
       (error) => {
         console.error('Error al crear el usuario:', error);
@@ -261,7 +290,9 @@ usuarioId: any;
     this.adminService.editarUsuario(this.idUsuario, this.AdminEditarUsuarioDto).subscribe(
       (data) => {
         console.log('Usuario editado correctamente:', data);
-
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
       },
       (error) => {
         console.error('Error al editar el usuario:', error);
@@ -277,12 +308,16 @@ usuarioId: any;
     this.adminService.borrarUsuario(this.idUsuario).subscribe(
       (data) => {
         console.log('Usuario eliminado correctamente:', data);
-
+      
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
           console.log(error.error);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000); 
         } else {
+          alert('Error al borrar el usuario o el usuario no existe')
           console.error('Error al eliminar el servicio:', error);
 
         }
@@ -306,8 +341,11 @@ enlazarOfertaUsuario(): void {
     return;
   }
   this.adminService.enlazarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
-    response => {
-      this.mensaje2 = 'Oferta enlazada exitosamente';
+    data => {
+      this.enlazarOferta = true;
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000); 
     },
     error => {
       console.error('Error del servidor:', error);
@@ -321,8 +359,8 @@ borrarOfertaUsuario(): void {
     return;
   }
   this.adminService.borrarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
-    response => {
-      this.mensaje = response.message;
+    data => {
+   
     },
     error => {
       this.mensaje = `Error al borrar la oferta del usuario: ${error.message}`;

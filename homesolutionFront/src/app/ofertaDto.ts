@@ -1,4 +1,4 @@
-// oferta.dto.ts
+
 export interface OfertaDto {
   descripcionOferta: string;
   categoriaServicio: string;
@@ -11,7 +11,6 @@ export interface AdminEditarOfertaDto {
   categoriaServicio: string;
   servicioId: number;
 }
-
 
 export interface EnlazarOfertaUsuarioDto {
   usuarioId: number;

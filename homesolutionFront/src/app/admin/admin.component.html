@@ -1,5 +1,3 @@
-<!-- admin.component.html -->
-
 <br><br><br>
 
 <div class="container">
@@ -25,6 +23,7 @@
                     <label for="idOferta">ID de la oferta:</label>
                     <input type="number" id="idOferta-1" [(ngModel)]="ofertaId">
                     <button (click)="verOferta()">Ver Oferta</button>
+
                   </div>
 
                   <div *ngIf="oferta">
@@ -43,7 +42,11 @@
                     Servicio ID: <input type="number" name="servicioId" [(ngModel)]="nuevaOferta.servicioId"
                       required><br>
                     <button type="submit">Crear Oferta</button>
+                    <div *ngIf="ofertaCreada" class="mensaje-exito">
+                      Oferta Creada
+                    </div>
                   </form>
+
                 </div>
               </div>
               <div>
@@ -69,7 +72,6 @@
                   <button type="submit">Guardar cambios</button>
                 </form>
               </div>
-
               <div>
                 <h2>Eliminar Oferta</h2>
                 <div>
@@ -132,6 +134,9 @@
                   name="categoriaServicio">
               </div>
               <button type="submit">Crear Servicio</button>
+              <div *ngIf="servicioCreado" class="mensaje-exito">
+                  Servicio Creado
+              </div>
             </form>
           </div>
           <div>
@@ -185,8 +190,8 @@
             <h2>Lista de Usuarios</h2>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingUsuarios">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios"
-                  aria-expanded="false" aria-controls="collapseUsuarios">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
                   Lista de Usuarios
                 </button>
               </h2>
@@ -234,6 +239,9 @@
               <input type="text" id="direccion1" [(ngModel)]="crearUsuarioDto.direccion" name="direccion">
             </div>
             <button (click)="crearUsuario()">Crear Usuario</button>
+            <div *ngIf="usuarioCreado" class="mensaje-exito">
+              usuario creado 
+          </div>
           </div>
           <div>
             <h2>Editar Usuario</h2>
@@ -313,8 +321,11 @@
                   required>
               </div>
               <button type="submit" class="btn btn-primary">Enlazar</button>
+              <div *ngIf="enlazarOferta" class="mensaje-exito">
+                oferta enlazada
+            </div>
             </form>
-            <div *ngIf="mensaje" class="alert alert-info">{{ mensaje }}</div>
+            
           </div>
           <div>
             <h2>Borrar Oferta de Usuario</h2>
@@ -329,9 +340,11 @@
                 <input type="number" id="ofertaId3" [(ngModel)]="ofertaId" name="ofertaId" class="form-control"
                   required>
               </div>
-              <button type="submit" class="btn btn-danger">Borrar</button>
+              <button type="submit" class="btn btn-danger" (ngSubmit)="borrarOfertaUsuario()" >Borrar</button>
+              <div *ngIf="ofertausuarioBorrada" class="mensaje-exito">
+               OfertaUsuario Borrada
+            </div>
             </form>
-            <div *ngIf="mensaje2" class="alert alert-info">{{ mensaje2 }}</div>
           </div>
         </div>
       </div>

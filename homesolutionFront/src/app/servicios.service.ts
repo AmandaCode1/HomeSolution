@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ServiciosService {
 
-  private apiUrl = 'https://localhost:7161/api/Servicios/VerLista' 
+  private apiUrl = 'https://localhost:7161/api/Servicios/VerLista'
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
   getData(): Observable<any[]> {

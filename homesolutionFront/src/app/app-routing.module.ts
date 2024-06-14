@@ -6,7 +6,6 @@ import { QuehacemosComponent } from './quehacemos/quehacemos.component';
 import { UrgenciasComponent } from './urgencias/urgencias.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';

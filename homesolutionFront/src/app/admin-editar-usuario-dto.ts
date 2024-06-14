@@ -1,5 +1,3 @@
-// admin-editar-usuario-dto.ts
-
 export interface AdminEditarUsuarioDto {
     nombreUsuario: string;
     correoElectronico: string;

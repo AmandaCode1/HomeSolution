@@ -1,11 +1,7 @@
-// admin.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AdminEditarOfertaDto, EnlazarOfertaUsuarioDto, OfertaDto } from './ofertaDto';
-import { ServicioDto } from './serviciosDto';
-import { AdminEditarUsuarioDto } from './admin-editar-usuario-dto';
+import { AdminEditarOfertaDto,} from './ofertaDto';
 
   @Injectable({
     providedIn: 'root'
