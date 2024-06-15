@@ -1,5 +1,8 @@
 # HomeSolution
-the best project in the world
+
+#Proyecto Final Entrega 14/06/24
+
+https://www.notion.so/HomeSolutions-b7c4312fd918483387f428e7d062d507
 
 
 #AnteProyecto
