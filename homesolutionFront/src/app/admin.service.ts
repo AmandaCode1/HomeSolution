@@ -97,5 +97,10 @@ export class AdminService {
     const url = `${this.apiUrl}/UsuariosOfertas/BorrarOfertaUsuario?usuarioId=${usuarioId}&ofertaId=${ofertaId}`;
     return this.http.delete<any>(url, { headers });
   }
-
+  getOfertas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Ofertas/VerLista`);
+  }
+  getData(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Servicios/VerLista`);
+  }
 }

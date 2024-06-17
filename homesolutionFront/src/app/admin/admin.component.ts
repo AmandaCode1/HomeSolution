@@ -11,12 +11,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
 export class AdminComponent implements OnInit {
+
   oferta: AdminEditarOfertaDto = {
     descripcionOferta: '',
     categoriaServicio: '',
     servicioId: 0,
-
   };
   ofertaId: number = 0;
   nuevaOferta: OfertaDto = {
@@ -25,8 +26,7 @@ export class AdminComponent implements OnInit {
     servicioId: 0
   };
 
-  Verferta: any;
-
+  Veroferta: any[] | undefined;
   servicioId!: number;
   servicio: any;
 
@@ -45,6 +45,8 @@ export class AdminComponent implements OnInit {
   };
 
   listaUsuarios: any[] | undefined;
+  listaServicios: any[] = [];
+
 
   crearUsuarioDto: any = {
     nombreUsuario: '',
@@ -61,31 +63,33 @@ export class AdminComponent implements OnInit {
     password: '',
     rol: '',
     correoElectronico: '',
-    direccion: '',  
+    direccion: '',
     telefono: ''
   };
 
- 
+
   message: string | undefined;
 
   usuariosOfertas: any;
-  EnlazarOfertaUsuarioDto:any={
+  EnlazarOfertaUsuarioDto: any = {
     usuarioId: 0,
     ofertaId: 0,
   }
-usuarioId: any;
+  usuarioId: any;
   mensaje: string | undefined;
   mensaje2: string | undefined;
   ofertaCreada = false;
-  servicioCreado=false;
-  usuarioCreado=false;
-  enlazarOferta=false;
-  ofertausuarioBorrada=false;
+  servicioCreado = false;
+  usuarioCreado = false;
+  enlazarOferta = false;
+  ofertausuarioBorrada = false;
   constructor(private adminService: AdminService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.obtenerListaUsuarios();
     this.obtenerUsuariosOfertas();
+    this.llenarOfertas();
+    this.llenarServicios();
   }
   crearOferta(crearOfertaDto: any): void {
     if (!crearOfertaDto.descripcionOferta || !crearOfertaDto.categoriaServicio || !crearOfertaDto.servicioId) {
@@ -97,13 +101,25 @@ usuarioId: any;
 
         console.log('Oferta creada correctamente:', data);
         this.ofertaCreada = true;
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000); 
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       },
       (error) => {
 
         console.error('Error al crear oferta:', error);
+      }
+    );
+  }
+
+  llenarOfertas(): void {
+    this.adminService.getOfertas().subscribe(
+      oferta => {
+        this.Veroferta = oferta;
+        console.log('Lista de ofertas obtenida correctamente:', this.Veroferta);
+      },
+      error => {
+        console.error('Error al obtener las ofertas', error);
       }
     );
   }
@@ -132,11 +148,14 @@ usuarioId: any;
         console.log('Oferta editada correctamente:', data);
         setTimeout(() => {
           window.location.reload();
-        }, 1000); 
+        }, 1000);
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
           console.log(error.error);
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         } else {
           console.error('Error al editar la oferta:', error);
 
@@ -156,11 +175,11 @@ usuarioId: any;
       },
 
       error => {
-      
+
         if (error instanceof HttpErrorResponse && error.status === 200) {
           setTimeout(() => {
             window.location.reload();
-          }, 1000); 
+          }, 1000);
           console.log(error.error);
         } else {
 
@@ -169,6 +188,20 @@ usuarioId: any;
 
       })
   }
+
+
+  llenarServicios(): void {
+    this.adminService.getData().subscribe(
+      data => {
+        this.listaServicios = data;
+        console.log('Lista de servicios obtenida correctamente:', this.listaServicios);
+      },
+      error => {
+        console.error('Error al obtener las servicios', error);
+      }
+    );
+  }
+
   verServicio(): void {
     if (!this.servicioId) {
       alert('El ID del servicio debe estar relleno');
@@ -197,7 +230,7 @@ usuarioId: any;
         console.log('Servicio creado correctamente:', data);
         setTimeout(() => {
           window.location.reload();
-        }, 1000); 
+        }, 1000);
       },
       (error) => {
         console.error('Error al crear el servicio:', error);
@@ -214,13 +247,13 @@ usuarioId: any;
     this.adminService.editarServicio(this.servicioId, this.editarServicioDto).subscribe(
       (data) => {
         console.log('Servicio editado correctamente:', data);
-       
+
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
           setTimeout(() => {
             window.location.reload();
-          }, 1000); 
+          }, 1000);
           console.log(error.error);
         } else {
           console.error(`Error al editar el servicio con ID ${this.servicioId}:`, error);
@@ -243,7 +276,7 @@ usuarioId: any;
           console.log(error.error);
           setTimeout(() => {
             window.location.reload();
-          }, 1000); 
+          }, 1000);
         } else {
           console.error('Error al eliminar el servicio:', error);
 
@@ -274,7 +307,7 @@ usuarioId: any;
         this.usuarioCreado = true;
         setTimeout(() => {
           window.location.reload();
-        }, 1000); 
+        }, 1000);
       },
       (error) => {
         console.error('Error al crear el usuario:', error);
@@ -283,23 +316,37 @@ usuarioId: any;
     );
   }
   editarUsuario(): void {
-    if (!this.idUsuario || !this.AdminEditarUsuarioDto.nombreUsuario || !this.AdminEditarUsuarioDto.correoElectronico || !this.AdminEditarUsuarioDto.password || !this.AdminEditarUsuarioDto.rol || !this.AdminEditarUsuarioDto.telefono || !this.AdminEditarUsuarioDto.direccion) {
+    if (!this.idUsuario ||
+      !this.AdminEditarUsuarioDto.nombreUsuario ||
+      !this.AdminEditarUsuarioDto.correoElectronico ||
+      !this.AdminEditarUsuarioDto.password ||
+      !this.AdminEditarUsuarioDto.rol ||
+      !this.AdminEditarUsuarioDto.telefono ||
+      !this.AdminEditarUsuarioDto.direccion) {
+
       alert('Todos los campos del usuario deben estar rellenados para editar');
       return;
     }
+
     this.adminService.editarUsuario(this.idUsuario, this.AdminEditarUsuarioDto).subscribe(
       (data) => {
         console.log('Usuario editado correctamente:', data);
+
         setTimeout(() => {
           window.location.reload();
-        }, 1000); 
+        }, 1000);
       },
       (error) => {
         console.error('Error al editar el usuario:', error);
-
+        if (error.status === 500) {
+          alert('Error interno del servidor al editar el usuario. Por favor, intenta nuevamente más tarde.');
+        } else {
+          alert('Ocurrió un error al editar el usuario. Por favor, intenta nuevamente.');
+        }
       }
     );
   }
+
   borrarUsuario(): void {
     if (!this.idUsuario) {
       alert('El ID del usuario debe estar relleno para eliminar');
@@ -308,14 +355,14 @@ usuarioId: any;
     this.adminService.borrarUsuario(this.idUsuario).subscribe(
       (data) => {
         console.log('Usuario eliminado correctamente:', data);
-      
+
       },
       error => {
         if (error instanceof HttpErrorResponse && error.status === 200) {
           console.log(error.error);
           setTimeout(() => {
             window.location.reload();
-          }, 1000); 
+          }, 1000);
         } else {
           alert('Error al borrar el usuario o el usuario no existe')
           console.error('Error al eliminar el servicio:', error);
@@ -334,38 +381,46 @@ usuarioId: any;
       }
     );
   }
-  
-enlazarOfertaUsuario(): void {
-  if (!this.usuarioId || !this.ofertaId) {
-    alert('ID del Usuario y ID de la Oferta deben estar rellenados');
-    return;
-  }
-  this.adminService.enlazarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
-    data => {
-      this.enlazarOferta = true;
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000); 
-    },
-    error => {
-      console.error('Error del servidor:', error);
-      this.message = 'Error al enlazar oferta con usuario: ' + (error.error?.message || error.message);
-    }
-  );
-}
-borrarOfertaUsuario(): void {
-  if (!this.usuarioId || !this.ofertaId) {
-    alert('ID del Usuario y ID de la Oferta deben estar rellenados');
-    return;
-  }
-  this.adminService.borrarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
-    data => {
-   
-    },
-    error => {
-      this.mensaje = `Error al borrar la oferta del usuario: ${error.message}`;
-    }
-  );
-}
-}
 
+  enlazarOfertaUsuario(): void {
+    if (!this.usuarioId || !this.ofertaId) {
+      alert('ID del Usuario y ID de la Oferta deben estar rellenados');
+      return;
+    }
+    this.adminService.enlazarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
+      data => {
+        this.enlazarOferta = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      },
+      error => {
+        console.error('Error del servidor:', error);
+        this.message = 'Error al enlazar oferta con usuario: ' + (error.error?.message || error.message);
+      }
+    );
+  }
+
+  borrarOfertaUsuario(): void {
+    if (!this.usuarioId || !this.ofertaId) {
+      alert('ID del Usuario y ID de la Oferta deben estar rellenados');
+      return;
+    }
+    this.adminService.borrarOfertaUsuario(this.usuarioId, this.ofertaId).subscribe(
+      () => {
+        console.log('Oferta de usuario eliminada correctamente.');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); 
+      },
+      (error) => {
+        if (error.status === 404) {
+        
+        } else {
+          console.log('Oferta de usuario eliminada correctamente.');
+       
+        }
+      }
+    );
+  }
+}

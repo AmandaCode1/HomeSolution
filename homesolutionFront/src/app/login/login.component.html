@@ -58,6 +58,7 @@
             <button type="submit" class="submit-btn">Registrar</button>
             <div *ngIf="ConectarSesion" class="welcome-message">{{ ConectarSesion }}</div>
           </form>
+          <br><br>
         </ng-template>
 
         <div class="auth-toggle">
@@ -66,10 +67,11 @@
           </button>
         </div>
       </div>
+      <br><br><br><br>
     </div>
     <div class="auth-container" *ngIf="autenticado">
       <div class="welcome-message"><h2>Bienvenido</h2><br><h3>{{ nombre }}</h3></div>
-      <br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
     </div>
   </main>
